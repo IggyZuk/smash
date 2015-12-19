@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
 			boneRigidbody.AddTorque(-boneRigidbody.velocity.x * 0.8f, ForceMode2D.Impulse);
 		}
 
+		GetComponentInChildren<ParticleSystem>().transform.SetParent(null);
 		GameObject.Destroy(this.gameObject);
 	}
 }
