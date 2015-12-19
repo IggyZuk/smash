@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
 
 	private void Jump(Vector3 dir, float magnitude = 1f)
 	{
+		VisualUtils.AddDarkHit(new Vector3(this.transform.position.x, this.transform.position.y, -1f));
 		_rb.velocity = Vector2.zero;
 		_rb.AddForce(dir * _jumpHeight * magnitude, ForceMode2D.Impulse);
 	}

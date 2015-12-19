@@ -32,6 +32,10 @@ public class Barrel : MonoBehaviour
 		if(_isPlayerInside)
 		{
 			_isShooting = true;
+
+			Vector3 pos = this.transform.position + this.transform.up * 1.25f;
+			pos.z = -1f;
+			VisualUtils.AddFireExplosion(pos);
 		}
 	}
 

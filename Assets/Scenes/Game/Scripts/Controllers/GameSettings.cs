@@ -29,5 +29,7 @@ public class Prefabs
 	public GameObject Bone;
 	[Header("FX")]
 	public GameObject Explosion;
+	public GameObject FireExplosion;
 	public GameObject Hit;
+	public GameObject DarkHit;
 }
