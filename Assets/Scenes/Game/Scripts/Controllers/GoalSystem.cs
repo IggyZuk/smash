@@ -16,8 +16,8 @@ public class GoalSystem : MonoBehaviour
 
 	private int _count = 0;
 	private float _nextHeight = Mathf.NegativeInfinity;
-	private float _multiplier = 1.25f;
-	private float _addition = 12.0f;
+	private float _multiplier = 2f;
+	private float _addition = 20.0f;
 
 	void Start()
 	{
@@ -80,6 +80,7 @@ public class GoalSystem : MonoBehaviour
 			_line.SetWidth(0.2f, 0.2f);
 			_line.SetColors(Color.gray, Color.gray);
 			StartCoroutine(SlowMotion_Coroutine());
+			GameController.Instance.Camera.ShowStatus();
 		}
 
 		_line = new GameObject().AddComponent<LineRenderer>();

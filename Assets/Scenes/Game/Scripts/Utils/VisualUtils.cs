@@ -9,4 +9,10 @@ public class VisualUtils : MonoBehaviour
 		GameController.Instance.Camera.Screenshake(0.5f, 1f);
 		//GameController.Instance.PlaySound(GameController.SoundId.Death);
 	}
+
+	public static void AddHit(Vector3 pos)
+	{
+		Instantiate(GameSettings.Instance.Prefabs.Hit, pos, Quaternion.identity);
+		//GameController.Instance.PlaySound(GameController.SoundId.Death);
+	}
 }

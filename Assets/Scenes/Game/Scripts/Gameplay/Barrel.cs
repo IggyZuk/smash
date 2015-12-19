@@ -101,7 +101,7 @@ public class Barrel : MonoBehaviour
 	{
 		GameController.Instance.OnPlayerSetVisible(true);
 
-		GameController.Instance.OnPlayerBoost(dir, 1.5f);
+		GameController.Instance.OnPlayerBoost(dir, 1.25f);
 
 		VisualUtils.AddExplosion(this.transform.position);
 

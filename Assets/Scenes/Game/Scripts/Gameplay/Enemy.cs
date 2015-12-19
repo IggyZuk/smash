@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour
 
 			_isAlive = false;
 
+			VisualUtils.AddHit(this.transform.position);
+
 			if(--_health <= 0)
 			{
 				GameController.Instance.OnPlayerBoost(Vector3.up, 1.1f);

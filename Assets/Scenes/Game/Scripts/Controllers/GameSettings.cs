@@ -22,9 +22,12 @@ public class GameSettings : MonoBehaviour
 [System.Serializable]
 public class Prefabs
 {
+	[Header("Objects")]
 	public GameObject Player;
 	public GameObject Enemy;
 	public GameObject Barrel;
 	public GameObject Bone;
+	[Header("FX")]
 	public GameObject Explosion;
+	public GameObject Hit;
 }

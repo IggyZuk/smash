@@ -11,10 +11,14 @@ public class CameraController : MonoBehaviour
 
 	private Camera _cam;
 
+	public ParticleSystem Status;
+
 	void Awake()
 	{
 		_cam = Camera.main;
-	}
+
+		Status.Stop();
+    }
 
 	void FixedUpdate()
 	{
@@ -46,5 +50,11 @@ public class CameraController : MonoBehaviour
 			yield return null;
 		}
 		_cam.transform.localPosition = new Vector3(_cam.transform.localPosition.x, 0f, _cam.transform.localPosition.z);
+	}
+
+	public void ShowStatus()
+	{
+		Status.Clear();
+		Status.Play();
 	}
 }

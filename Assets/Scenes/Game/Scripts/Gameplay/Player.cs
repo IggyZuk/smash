@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 	private Rigidbody2D _rb;
 	private tk2dSprite _sprite;
 
-	private float _jumpHeight = 8f;
+	private float _jumpHeight = 5f;
 	private bool _isInputBlocked = false;
 
 	private enum JumpState
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 		{
 			jumpState = JumpState.Attack;
 			_sprite.color = Color.red;
-			Jump(direction, 1.25f);
+			Jump(direction);
 		}
 		else if(jumpState == JumpState.Floating)
 		{
