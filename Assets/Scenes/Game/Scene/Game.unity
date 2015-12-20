@@ -897,10 +897,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1202881761}
   - 20: {fileID: 1202881760}
-  - 124: {fileID: 1202881759}
-  - 92: {fileID: 1202881758}
-  - 81: {fileID: 1202881757}
+  - 114: {fileID: 1202881762}
   - 114: {fileID: 1202881756}
+  - 114: {fileID: 1202881757}
   m_Layer: 0
   m_Name: BackgroundCamera
   m_TagString: Untagged
@@ -914,34 +913,34 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202881755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb57b3a1a0c5244ea09d4179e14f6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
-  Scale: 16
---- !u!81 &1202881757
-AudioListener:
+  BackgroundTex: {fileID: 2800000, guid: d3c6975d216101b469afc2dba66cfd6a, type: 3}
+  BackgroundColor: {r: 0.27170363, g: 0, b: 0.83823526, a: 1}
+  Color1: {r: 1, g: 1, b: 1, a: 0}
+  Color2: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 0}
+  Scale: 64
+--- !u!114 &1202881757
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202881755}
-  m_Enabled: 1
---- !u!92 &1202881758
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1202881755}
-  m_Enabled: 1
---- !u!124 &1202881759
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1202881755}
-  m_Enabled: 1
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb57b3a1a0c5244ea09d4179e14f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
+  BackgroundTex: {fileID: 2800000, guid: 94869b70c691e48a4b2a304527956a5b, type: 3}
+  BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  Color1: {r: 1, g: 1, b: 1, a: 0}
+  Color2: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 0}
+  Scale: 32
 --- !u!20 &1202881760
 Camera:
   m_ObjectHideFlags: 0
@@ -950,8 +949,8 @@ Camera:
   m_GameObject: {fileID: 1202881755}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.019607844}
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.20045641, g: 0, b: 0.49264705, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -959,7 +958,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10
   field of view: 60
   orthographic: 1
   orthographic size: 1
@@ -988,6 +987,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1202881762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202881755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb57b3a1a0c5244ea09d4179e14f6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
+  BackgroundTex: {fileID: 0}
+  BackgroundColor: {r: 0.102941155, g: 0.102941155, b: 0.102941155, a: 0}
+  Color1: {r: 0.5025356, g: 0.30790442, b: 0.625, a: 0}
+  Color2: {r: 0.3261544, g: 0.19679932, b: 0.5147059, a: 0}
+  Scale: 35
 --- !u!4 &1721873002 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434844, guid: dc2cc38a36fe01f40a16016e33521195, type: 2}

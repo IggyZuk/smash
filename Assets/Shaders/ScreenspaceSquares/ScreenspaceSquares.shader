@@ -2,10 +2,12 @@ Shader "Custom/ScreenspaceSquares"
 {
 	Properties
 	{
-		_MainTex("Base (RGB)", 2D) = "white" {}
-		_Detail("Base (RGB)", 2D) = "white" {}
-		_Scale("Scale", Float) = 10
-		_Offset("Offset", Float) = 0
+		_BackgroundTex("Background (RGB)", 2D) = "white" {}
+		_BackgroundColor("Background Color", Color) = (1,1,1,1)
+		_Color1("Color1", Color) = (1,1,1,1)
+		_Color2("Color2", Color) = (0,0,0,1)
+		_Scale("Scale (Float)", Float) = 16
+		_Offset("Offset (Float)", Float) = 0
 	}
 
 	SubShader
@@ -30,8 +32,10 @@ Shader "Custom/ScreenspaceSquares"
 				float4 screenPos : TEXCOORD1;
 			};
 
-			uniform sampler2D _MainTex;
-			uniform sampler2D _Detail;
+			uniform sampler2D _BackgroundTex;
+			uniform float4 _BackgroundColor;
+			uniform float4 _Color1;
+			uniform float4 _Color2;
 			uniform float _Scale;
 			uniform float _Offset;
 
@@ -46,13 +50,26 @@ Shader "Custom/ScreenspaceSquares"
 
 			half4 frag(v2f i) : COLOR
 			{
-				float3 color = tex2D(_MainTex, i.uv).rgb;
-				float offset = (_Time.x);
-				float2 screenUV = i.screenPos.xy / i.screenPos.w + offset;
+				// Screen UV is offset by the camera position
+				float2 screenUV = i.screenPos.xy / i.screenPos.w;
 				screenUV.y += _Offset;
+
+				// Multiply background texture to the main texture
+				float4 color = tex2D(_BackgroundTex, screenUV) * _BackgroundColor;
+
+				// Add more offset; this is used by the squares
+				screenUV += _Time.x;
 				screenUV *= float2(_Scale * _ScreenParams.x / _ScreenParams.y, _Scale);
-				color *= tex2D(_Detail, screenUV).rgb;
-				return float4(color, 1);
+
+				// Draw the squares
+				float scale = _ScreenParams.y;
+				float2 uv = floor(scale * screenUV * float2(_ScreenParams.x / _ScreenParams.y, 1) / _ScreenParams.xy);
+				float colorValue = fmod(uv.x + uv.y, 2);
+				float4 squareColor = float4(lerp(_Color1, _Color2, colorValue));
+
+				color *= squareColor;
+
+				return color;
 			}
 
 			ENDCG

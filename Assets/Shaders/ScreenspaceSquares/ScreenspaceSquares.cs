@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -7,38 +8,27 @@ public class ScreenspaceSquares : MonoBehaviour
 {
 	public Shader shader;
 
+	public Texture2D BackgroundTex;
+
+	public Color BackgroundColor;
+	public Color Color1;
+	public Color Color2;
+
 	[Range(2, 64)]
 	public int Scale = 64;
 
-	private Texture2D _texture;
 	private Material _material;
 
 	private Player _player;
 
-	void Awake()
-	{
-		// Create the texture
-		_texture = new Texture2D(2, 2);
-		_texture.filterMode = FilterMode.Point;
-
-		for(int i = 0; i < _texture.width; ++i)
-		{
-			for(int j = 0; j < _texture.height; ++j)
-			{
-				bool isLight = (i + j) % 2 == 0;
-				_texture.SetPixel(i, j, isLight ? new Color(0.2f, 0.15f, 0.25f) : Color.black);
-			}
-		}
-		_texture.Apply();
-
-	}
-
 	void Start()
 	{
 		_player = GameController.Instance.Player;
+
+		OnRenderImage(null, RenderTexture.active);
 	}
 
-	protected Material material
+	protected Material Material
 	{
 		get
 		{
@@ -53,20 +43,20 @@ public class ScreenspaceSquares : MonoBehaviour
 
 	private void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
-		if(shader == null) return;
-		Material mat = material;
-		Graphics.Blit(source, destination, mat);
-
-		mat.SetTexture("_Detail", _texture);
-		mat.SetFloat("_Scale", Scale);
-		mat.SetFloat("_Offset", Camera.main.transform.position.y / 25f);
-	}
-
-	void OnDisable()
-	{
-		if(_material)
+		if(shader)
 		{
-			DestroyImmediate(_material);
+			Material mat = Material;
+
+			Graphics.Blit(new RenderTexture(0,0,0), destination, mat);
+
+			mat.SetTexture("_BackgroundTex", BackgroundTex);
+
+			mat.SetColor("_BackgroundColor", BackgroundColor);
+			mat.SetColor("_Color1", Color1);
+			mat.SetColor("_Color2", Color2);
+
+			mat.SetFloat("_Scale", Scale);
+			mat.SetFloat("_Offset", Camera.main.transform.position.y / 25f);
 		}
 	}
 }
