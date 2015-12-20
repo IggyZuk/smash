@@ -9,8 +9,13 @@ public class FPSCounter : MonoBehaviour
 	{
 		float fps = (int)(1.0f / Time.unscaledDeltaTime);
 		FPSText.text = string.Format("FPS: {0}", fps);
-		if(fps > 40) FPSText.color = Color.green;
-		else if(fps <= 40 && fps > 20) FPSText.color = Color.yellow;
-		else if(fps <= 20) FPSText.color = Color.red;
+
+		Color color = Color.white;
+		if(fps > 40f) color = Color.green;
+		else if(fps <= 40f && fps > 20f) color = Color.yellow;
+		else if(fps <= 20f) color = Color.red;
+		color.a = 0.5f;
+
+		FPSText.color = color;
 	}
 }

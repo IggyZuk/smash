@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 	private Rigidbody2D _rb;
 	private tk2dSprite _sprite;
 
-	private float _jumpHeight = 5f;
+	private PlayerSettings _settings;
+
 	private bool _isInputBlocked = false;
 
 	private enum JumpState
@@ -31,6 +32,9 @@ public class Player : MonoBehaviour
 
 	void Start()
 	{
+		// Let's get the player settings from our game settings
+		_settings = GameSettings.Instance.PlayerSettings;
+
 		// Register to game events
 		GameController.Instance.OnPlayerBoost += Boost;
 		GameController.Instance.OnPlayerInputBlocked += (bool blocked) => { _isInputBlocked = blocked; };
@@ -39,6 +43,7 @@ public class Player : MonoBehaviour
 		InputController.OnTouchBegan += TouchBegan;
 		InputController.OnTouchEnded += TouchEnded;
 
+		// We'll add the initial jump to get the game started
 		Jump(Vector2.up);
 	}
 
@@ -107,9 +112,11 @@ public class Player : MonoBehaviour
 
 	private void Jump(Vector3 dir, float magnitude = 1f)
 	{
-		VisualUtils.AddDarkHit(new Vector3(this.transform.position.x, this.transform.position.y, -1f));
 		_rb.velocity = Vector2.zero;
-		_rb.AddForce(dir * _jumpHeight * magnitude, ForceMode2D.Impulse);
+		_rb.AddForce(dir * _settings.JumpHeight * magnitude, ForceMode2D.Impulse);
+
+		VisualUtils.AddDarkHit(new Vector3(this.transform.position.x, this.transform.position.y, -1f));
+		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe);
 	}
 
 	private void Boost(Vector3 dir, float magnitude = 1f)
@@ -118,7 +125,7 @@ public class Player : MonoBehaviour
 		_rb.AddTorque(-_rb.velocity.x * 0.8f, ForceMode2D.Impulse);
 
 		_rb.velocity = new Vector2(_rb.velocity.x, 0f);
-		_rb.AddForce(dir * (_jumpHeight * 2f) * magnitude, ForceMode2D.Impulse);
+		_rb.AddForce(dir * (_settings.JumpHeight * 2f) * magnitude, ForceMode2D.Impulse);
 
 		jumpState = JumpState.Floating;
 		_sprite.color = Color.white;

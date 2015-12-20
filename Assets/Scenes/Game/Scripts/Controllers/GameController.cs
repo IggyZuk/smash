@@ -46,4 +46,24 @@ public class GameController : MonoBehaviour
 			Time.timeScale = 1f;
 		}
 	}
+
+	public void PlaySound(AudioClip clip)
+	{
+		AudioSource[] audioSources = GetComponents<AudioSource>();
+		AudioSource usableSource = null;
+
+		foreach(AudioSource audioSource in audioSources)
+		{
+			if(audioSource.isPlaying == false)
+			{
+				usableSource = audioSource;
+				break;
+			}
+		}
+
+		if(usableSource == null) usableSource = this.gameObject.AddComponent<AudioSource>();
+
+		usableSource.clip = clip;
+		usableSource.Play();
+	}
 }

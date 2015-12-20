@@ -6,22 +6,31 @@ public class Enemy : MonoBehaviour
 	private Rigidbody2D _rb;
 	private tk2dSprite _sprite;
 
+	private EnemySettings _settings;
+
 	private bool _isAlive = true;
-	private int _health = 2;
 
 	private float _time;
-	private Vector2 _radius;
-	private Vector2 _speed;
+	private float _speed;
 
 	void Awake()
 	{
 		// Find and assign references to components
 		_rb = GetComponent<Rigidbody2D>();
 		_sprite = GetComponent<tk2dSprite>();
+	}
+
+	void Start()
+	{
+		// Make a deep copy of the enemy settings from the game settings
+		_settings = GameSettings.Instance.EnemySettings.DeepCopy(GameSettings.Instance.EnemySettings);
 
 		_time = Random.value * 360f;
-		_radius = new Vector2(Random.Range(1f, 5f), Random.Range(1f, 5f));
-		_speed = new Vector2(Random.Range(1f, 3f), Random.Range(1f, 3f));
+		_speed = Random.value * 5f;
+
+		_rb.velocity = new Vector2(_speed, 0f);
+
+		Debug.Log(_rb.velocity);
 	}
 
 	void FixedUpdate()
@@ -31,10 +40,12 @@ public class Enemy : MonoBehaviour
 		{
 			_time += Time.deltaTime;
 
+			// Keep moving into the direction you were last looking at
+			float direction = Mathf.Sign(_rb.velocity.x);
 			_rb.velocity = Vector2.zero;
-			_rb.AddForce(new Vector3(Mathf.Cos(_time * _speed.x) * _radius.x, Mathf.Sin(_time * _speed.y) * _radius.y), ForceMode2D.Impulse);
+			_rb.AddForce(new Vector3(direction * _speed, 0f), ForceMode2D.Impulse);
 
-			Debug.DrawLine(transform.position, transform.position + new Vector3(Mathf.Cos(Time.time), Mathf.Sin(Time.time)));
+			Debug.DrawLine(transform.position, transform.position + (Vector3)_rb.velocity);
 		}
 
 		WorldUtils.StayInBounds(ref _rb);
@@ -58,18 +69,20 @@ public class Enemy : MonoBehaviour
 
 			VisualUtils.AddHit(this.transform.position);
 
-			if(--_health <= 0)
+			if(--_settings.Health <= 0)
 			{
 				GameController.Instance.OnPlayerBoost(Vector3.up, 1.1f);
 				Explode();
+				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Death);
 			}
 			else
 			{
 				GameController.Instance.OnPlayerBoost(Vector3.up, 0.75f);
 				GameController.Instance.Camera.Screenshake(0.25f, 0.5f);
+				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Smash);
 			}
 
-			_sprite.color = Color.Lerp(Color.white, Color.red, 1f / (float)_health);
+			_sprite.color = Color.Lerp(Color.white, Color.red, 1f / (float)_settings.Health);
 		}
 	}
 

@@ -29,13 +29,15 @@ public class Barrel : MonoBehaviour
 	// When the player is inside the barrel we can tap anywhere on the screen to shoot
 	private void TouchBegan(Vector2 touchPosition)
 	{
-		if(_isPlayerInside)
+		if(_isPlayerInside && _isShooting == false)
 		{
 			_isShooting = true;
 
+			// Add an explosion just slightly forward of the barrel's direction
 			Vector3 pos = this.transform.position + this.transform.up * 1.25f;
 			pos.z = -1f;
 			VisualUtils.AddFireExplosion(pos);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Explosion);
 		}
 	}
 
@@ -69,7 +71,7 @@ public class Barrel : MonoBehaviour
 
 	private IEnumerator PrepareToFire_Coroutine()
 	{
-		//GameController.Instance.PlaySound(GameController.SoundId.Collect);
+		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Collect);
 
 		GameController.Instance.OnPlayerInputBlocked(true);
 		GameController.Instance.OnPlayerSetVisible(false);
@@ -108,8 +110,7 @@ public class Barrel : MonoBehaviour
 		GameController.Instance.OnPlayerBoost(dir, 1.25f);
 
 		VisualUtils.AddExplosion(this.transform.position);
-
-		_isShooting = false;
+		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Explosion);
 	}
 
 	private IEnumerator BlockPlayerInputBitLonger_Coroutine()

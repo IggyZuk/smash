@@ -8,10 +8,12 @@ public class WorldUtils : MonoBehaviour
 	{
 		Vector3 viewportPosition = Camera.main.WorldToViewportPoint(rb.position);
 
-		if(viewportPosition.x < 0.0f || viewportPosition.x > 1.0f)
+		WorldSettings settings = GameSettings.Instance.WorldSettings;
+
+        if(viewportPosition.x < settings.EdgeMargin || viewportPosition.x > 1f - settings.EdgeMargin)
 		{
-			rb.position = Camera.main.ViewportToWorldPoint(new Vector2(Mathf.Clamp01(viewportPosition.x), viewportPosition.y));
-			rb.velocity = new Vector2(-rb.velocity.x * 0.75f, rb.velocity.y);
+			rb.position = Camera.main.ViewportToWorldPoint(new Vector2(Mathf.Clamp(viewportPosition.x, settings.EdgeMargin, 1f - settings.EdgeMargin), viewportPosition.y));
+			rb.velocity = new Vector2(-rb.velocity.x * settings.EdgeVelocityFriction, rb.velocity.y);
 		}
 	}
 

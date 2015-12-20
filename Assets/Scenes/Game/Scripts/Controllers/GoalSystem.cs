@@ -19,9 +19,14 @@ public class GoalSystem : MonoBehaviour
 	private float _multiplier = 2f;
 	private float _addition = 20.0f;
 
+	private int _scoreValue = 0;
+	private Color _originalScoreColor;
+
 	void Start()
 	{
 		_playerTransform = GameController.Instance.Player.transform;
+
+		_originalScoreColor = ScoreText.color;
 
 		NextGoal();
 	}
@@ -31,7 +36,7 @@ public class GoalSystem : MonoBehaviour
 		if(_playerTransform.position.y > _nextHeight)
 		{
 			NextGoal();
-			//GameController.Instance.PlaySound(GameController.SoundId.Milestone);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Milestone);
 		}
 
 		// Set next goal text
@@ -47,7 +52,7 @@ public class GoalSystem : MonoBehaviour
 			{
 				Vector2 entityPosition = _playerTransform.position;
 
-				entityPosition.x = Random.Range(WorldUtils.GetLeftEdge(), WorldUtils.GetRightEdge());
+				entityPosition.x = Random.Range(WorldUtils.GetLeftEdge() + 1f, WorldUtils.GetRightEdge() - 1f);
 				entityPosition.y += 10f;
 
 				GameObject entity;
@@ -65,9 +70,16 @@ public class GoalSystem : MonoBehaviour
 				_deltaPosition -= ADD_ENTITY_DISTANCE;
 			}
 
-			// Update height score
 			_maxHeight = Mathf.Max(0f, _playerTransform.position.y);
-			ScoreText.text = string.Format("Height: {0}m", Mathf.Floor(_maxHeight));
+
+			// Update height score
+			int score = (int)Mathf.Floor(_maxHeight / 5f);
+			if(score > _scoreValue)
+			{
+				_scoreValue = score;
+				ScoreText.text = string.Format("Height: {0}m", score);
+				StartCoroutine(EmphasizeScore_Coroutine(0.25f));
+			}
 		}
 	}
 
@@ -79,13 +91,13 @@ public class GoalSystem : MonoBehaviour
 		{
 			_line.SetWidth(0.2f, 0.2f);
 			_line.SetColors(Color.gray, Color.gray);
-			StartCoroutine(SlowMotion_Coroutine());
+			StartCoroutine(SlowMotion_Coroutine(0.25f));
 			GameController.Instance.Camera.ShowStatus();
 		}
 
-		_line = new GameObject().AddComponent<LineRenderer>();
+		_line = new GameObject("Line").AddComponent<LineRenderer>();
 		_line.material = new Material(Shader.Find("Sprites/Default"));
-		Color randomColor = new Color(Random.value, Random.value, Random.value);
+		Color randomColor = new Color(0f, 1f, 0.7f);
 		_line.SetColors(randomColor, randomColor);
 		_line.SetWidth(0.2f, 0.2f);
 
@@ -93,26 +105,44 @@ public class GoalSystem : MonoBehaviour
 		_line.SetPosition(1, new Vector3(WorldUtils.GetRightEdge(), _nextHeight, 0));
 	}
 
-	IEnumerator SlowMotion_Coroutine()
+	IEnumerator SlowMotion_Coroutine(float time)
 	{
 		//AndroidNotificationManager.instance.ScheduleLocalNotification("New Highscore", "Holy smokes, you're doing awesome!", 1);
 
-		Time.timeScale = 0.3f;
-		Time.fixedDeltaTime = 0.02f * Time.timeScale;
+		float fixedDeltaTime = Time.fixedDeltaTime;
 
-		yield return new WaitForSeconds(1.0f * Time.timeScale);
+		Time.timeScale = GameSettings.Instance.WorldSettings.SlowMotion;
+		Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
+
+		yield return new WaitForSeconds(GameSettings.Instance.WorldSettings.SlowMotionWait * Time.timeScale);
 
 		float t = 0f;
-		float time = 0.25f;
 
 		while(t < time)
 		{
 			t += Time.unscaledDeltaTime;
 
-			Time.timeScale = Mathf.Lerp(0.3f, 1f, t / time);
-			Time.fixedDeltaTime = 0.02f * Time.timeScale;
+			Time.timeScale = Mathf.Lerp(GameSettings.Instance.WorldSettings.SlowMotion, 1f, t / time);
+			Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
 
 			yield return null;
 		}
+	}
+
+	private IEnumerator EmphasizeScore_Coroutine(float time)
+	{
+		float t = 0f;
+
+		while(t < time)
+		{
+			t += Time.deltaTime;
+			float tSmooth = Mathf.SmoothStep(0f, 1f, t / time);
+
+			ScoreText.transform.localScale = Vector3.Lerp(Vector3.one * 1.25f, Vector3.one, tSmooth);
+			ScoreText.color = Color.Lerp(new Color(0f, 1f, 0.7f), _originalScoreColor, tSmooth);
+
+			yield return null;
+		}
+
 	}
 }
