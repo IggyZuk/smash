@@ -367,7 +367,7 @@ ParticleSystem:
     radius: 1
     angle: 25
     length: 5
-    boxX: 20
+    boxX: 10
     boxY: 1
     boxZ: 20
     arc: 360
