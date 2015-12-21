@@ -885,9 +885,9 @@ MonoBehaviour:
   PlayerSettings:
     JumpHeight: 5
   EnemySettings:
-    Health: 4
+    Health: 2
   DamageSettings:
-    Boost: 12
+    Boost: 8
   AudioSettings:
     Collect: {fileID: 8300000, guid: eb6d36ff5c59e5d4c8e1f1d5e9de2aa6, type: 3}
     Death: {fileID: 8300000, guid: b9c811018f909dd418c8d238029cc763, type: 3}

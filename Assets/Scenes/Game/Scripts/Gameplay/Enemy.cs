@@ -60,32 +60,38 @@ public class Enemy : MonoBehaviour
 		// If we've collided with the player then fire an event to let the player know! Also let's take away some health for the enemy
 		if(collider.tag == "Player")
 		{
-			_rb.gravityScale = 0.9f;
+			_isAlive = false;
+
+			float damageValue = 1f - (float)(_settingsModified.Health - 1) / (float)_settings.Health;
+			float boost = Mathf.Lerp(0.5f, 1f, damageValue);
+
+			_rb.gravityScale = 0.5f;
+
 			Vector2 vel = GameController.Instance.Player.GetVelocity();
-			vel.y = 7.0f;
-			_rb.velocity = vel;
+			vel.y = GameSettings.Instance.DamageSettings.Boost * 0.5f;
+
+			_rb.velocity = Vector2.zero;
+			_rb.AddForce(vel, ForceMode2D.Impulse);
 
 			_sprite.SetSprite(Random.value < 0.5f ? "GoombaDead1" : "GoombaDead2");
 
-			_isAlive = false;
-
 			VisualUtils.AddHit(this.transform.position);
 
-			float damageValue = 1f - (float)(_settingsModified.Health - 1) / (float)_settings.Health;
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Smash, 1f, damageValue + 1f);
 
 			if(--_settingsModified.Health <= 0)
 			{
-				GameController.Instance.OnPlayerBoost(Vector3.up, 1.1f);
 				Explode();
 				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Death);
+
+				GameController.Instance.OnPlayerBoost(Vector3.up, boost * 1.25f);
 			}
 			else
 			{
-				GameController.Instance.OnPlayerBoost(Vector3.up, 0.75f);
+				_sprite.color = Color.Lerp(Color.white, Color.red, damageValue);
 				GameController.Instance.Camera.Screenshake(0.25f, 0.5f);
 
-				_sprite.color = Color.Lerp(Color.white, Color.red, damageValue);
+				GameController.Instance.OnPlayerBoost(Vector3.up, boost);
 			}
 		}
 	}
