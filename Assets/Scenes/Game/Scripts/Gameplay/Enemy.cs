@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 	private tk2dSprite _sprite;
 
 	private EnemySettings _settings;
+	private EnemySettings _settingsModified;
 
 	private bool _isAlive = true;
 
@@ -23,7 +24,8 @@ public class Enemy : MonoBehaviour
 	void Start()
 	{
 		// Make a deep copy of the enemy settings from the game settings
-		_settings = GameSettings.Instance.EnemySettings.DeepCopy(GameSettings.Instance.EnemySettings);
+		_settings = GameSettings.Instance.EnemySettings;
+		_settingsModified = GameSettings.Instance.EnemySettings.DeepCopy(_settings);
 
 		_time = Random.value * 360f;
 		_speed = Random.value * 5f;
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
 			_rb.gravityScale = 0.9f;
 			Vector2 vel = GameController.Instance.Player.GetVelocity();
 			vel.y = 7.0f;
-			_rb.AddForce(vel, ForceMode2D.Impulse);
+			_rb.velocity = vel;
 
 			_sprite.SetSprite(Random.value < 0.5f ? "GoombaDead1" : "GoombaDead2");
 
@@ -69,7 +71,10 @@ public class Enemy : MonoBehaviour
 
 			VisualUtils.AddHit(this.transform.position);
 
-			if(--_settings.Health <= 0)
+			float damageValue = 1f - (float)(_settingsModified.Health - 1) / (float)_settings.Health;
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Smash, 1f, damageValue + 1f);
+
+			if(--_settingsModified.Health <= 0)
 			{
 				GameController.Instance.OnPlayerBoost(Vector3.up, 1.1f);
 				Explode();
@@ -79,10 +84,9 @@ public class Enemy : MonoBehaviour
 			{
 				GameController.Instance.OnPlayerBoost(Vector3.up, 0.75f);
 				GameController.Instance.Camera.Screenshake(0.25f, 0.5f);
-				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Smash);
-			}
 
-			_sprite.color = Color.Lerp(Color.white, Color.red, 1f / (float)_settings.Health);
+				_sprite.color = Color.Lerp(Color.white, Color.red, damageValue);
+			}
 		}
 	}
 

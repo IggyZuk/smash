@@ -86,18 +86,21 @@ public class Player : MonoBehaviour
 			jumpState = JumpState.Attack;
 			_sprite.color = Color.red;
 			Jump(direction);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Dive, 0.5f, 1f);
 		}
 		else if(jumpState == JumpState.Floating)
 		{
 			jumpState = JumpState.FirstJump;
 			_sprite.color = new Color(0.25f, 0.75f, 0.25f);
 			Jump(direction);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1f);
 		}
 		else if(jumpState == JumpState.FirstJump)
 		{
 			jumpState = JumpState.SecondJump;
 			_sprite.color = Color.green;
 			Jump(direction);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1.25f);
 		}
 	}
 
@@ -116,7 +119,6 @@ public class Player : MonoBehaviour
 		_rb.AddForce(dir * _settings.JumpHeight * magnitude, ForceMode2D.Impulse);
 
 		VisualUtils.AddDarkHit(new Vector3(this.transform.position.x, this.transform.position.y, -1f));
-		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe);
 	}
 
 	private void Boost(Vector3 dir, float magnitude = 1f)

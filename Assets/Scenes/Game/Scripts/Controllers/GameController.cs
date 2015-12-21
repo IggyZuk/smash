@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	public void PlaySound(AudioClip clip)
+	public void PlaySound(AudioClip clip, float volume = 1f, float pitch = 1f)
 	{
 		AudioSource[] audioSources = GetComponents<AudioSource>();
 		AudioSource usableSource = null;
@@ -64,6 +64,8 @@ public class GameController : MonoBehaviour
 		if(usableSource == null) usableSource = this.gameObject.AddComponent<AudioSource>();
 
 		usableSource.clip = clip;
+		usableSource.volume = volume;
+		usableSource.pitch = pitch;
 		usableSource.Play();
 	}
 }

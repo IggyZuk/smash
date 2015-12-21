@@ -75,4 +75,6 @@ public class AudioSettings
 	public AudioClip Milestone;
 	public AudioClip Smash;
 	public AudioClip Swipe;
+	public AudioClip Dive;
+	public AudioClip ScorePoint;
 }

@@ -22,6 +22,9 @@ public class GoalSystem : MonoBehaviour
 	private int _scoreValue = 0;
 	private Color _originalScoreColor;
 
+	private float _scorePitch = 1f;
+	private float _lastHeight = 0f;
+
 	void Start()
 	{
 		_playerTransform = GameController.Instance.Player.transform;
@@ -35,8 +38,10 @@ public class GoalSystem : MonoBehaviour
 	{
 		if(_playerTransform.position.y > _nextHeight)
 		{
+			_lastHeight = _nextHeight;
 			NextGoal();
-			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Milestone);
+			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Milestone, 1.5f);
+			_scorePitch = 1f;
 		}
 
 		// Set next goal text
@@ -73,12 +78,14 @@ public class GoalSystem : MonoBehaviour
 			_maxHeight = Mathf.Max(0f, _playerTransform.position.y);
 
 			// Update height score
-			int score = (int)Mathf.Floor(_maxHeight / 5f);
+			int score = (int)Mathf.Floor(_maxHeight / 2.5f);
 			if(score > _scoreValue)
 			{
 				_scoreValue = score;
 				ScoreText.text = string.Format("Height: {0}m", score);
 				StartCoroutine(EmphasizeScore_Coroutine(0.25f));
+				_scorePitch = (_playerTransform.position.y - _lastHeight) / (_nextHeight - _lastHeight) + 1f * 0.5f;
+				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.ScorePoint, 0.25f, _scorePitch);
 			}
 		}
 	}
