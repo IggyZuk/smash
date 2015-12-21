@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
 
 	private GoalSystem GoalSystem;
 
+	private bool _isPaused = false;
+
 	public static GameController Instance { get; private set; }
 
 	void Awake()
@@ -35,6 +37,11 @@ public class GameController : MonoBehaviour
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			Time.timeScale = 1f;
+		}
+
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			TogglePause();
 		}
 	}
 
@@ -67,5 +74,12 @@ public class GameController : MonoBehaviour
 		usableSource.volume = volume;
 		usableSource.pitch = pitch;
 		usableSource.Play();
+	}
+
+	public void TogglePause()
+	{
+		_isPaused = !_isPaused;
+		if(_isPaused) Time.timeScale = 0f;
+		else Time.timeScale = 1f;
 	}
 }
