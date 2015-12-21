@@ -316,6 +316,18 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11469338, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
+      propertyPath: _spriteId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469338, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
+      propertyPath: _scale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469338, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
+      propertyPath: _scale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
   m_IsPrefabParent: 0
@@ -721,6 +733,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19839828, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
   m_IsPrefabParent: 0
@@ -870,6 +886,8 @@ MonoBehaviour:
     JumpHeight: 5
   EnemySettings:
     Health: 4
+  DamageSettings:
+    Boost: 12
   AudioSettings:
     Collect: {fileID: 8300000, guid: eb6d36ff5c59e5d4c8e1f1d5e9de2aa6, type: 3}
     Death: {fileID: 8300000, guid: b9c811018f909dd418c8d238029cc763, type: 3}
@@ -970,7 +988,7 @@ MonoBehaviour:
   viewportRegion: {x: 0, y: 0, z: 100, w: 100}
   zoomFactor: 1
   forceResolutionInEditor: 1
-  forceResolution: {x: 750, y: 920}
+  forceResolution: {x: 480, y: 854}
 --- !u!20 &1187429196
 Camera:
   m_ObjectHideFlags: 3
@@ -1063,7 +1081,7 @@ MonoBehaviour:
   BackgroundTex: {fileID: 2800000, guid: d3c6975d216101b469afc2dba66cfd6a, type: 3}
   BackgroundColor: {r: 0.09406692, g: 0, b: 0.3897059, a: 1}
   Color1: {r: 1, g: 1, b: 1, a: 0}
-  Color2: {r: 0.89705884, g: 0.89705884, b: 0.89705884, a: 0}
+  Color2: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 0}
   Scale: 64
 --- !u!114 &1202881757
 MonoBehaviour:
@@ -1158,9 +1176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
   BackgroundTex: {fileID: 0}
-  BackgroundColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 0}
-  Color1: {r: 0.5025356, g: 0.30790442, b: 0.625, a: 0}
-  Color2: {r: 0.3261544, g: 0.19679932, b: 0.5147059, a: 0}
+  BackgroundColor: {r: 0.08605622, g: 0.03211505, b: 0.19852942, a: 0}
+  Color1: {r: 1, g: 1, b: 1, a: 0}
+  Color2: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 0}
   Scale: 35
 --- !u!1 &1285851045
 GameObject:
@@ -2922,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 2024444199}
-  FollowSpeed: 8
+  FollowSpeed: 20
   VelocitySpeed: 1.5
   Status: {fileID: 2034951377}
 --- !u!4 &1967639885
@@ -2982,7 +3000,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3379172, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
+    - target: {fileID: 3352700, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}

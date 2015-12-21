@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-	private Rigidbody2D _rb;
+	[SerializeField]
 	private tk2dSprite _sprite;
+	[SerializeField]
+	private tk2dSpriteAnimator _animator;
+
+	private Rigidbody2D _rb;
 
 	private PlayerSettings _settings;
 
@@ -18,16 +22,17 @@ public class Player : MonoBehaviour
 		Attack
 	}
 
-	private JumpState jumpState = JumpState.Floating;
+	private JumpState _jumpState = JumpState.Floating;
 
 	private Vector2 _startTouchPos;
 	private Vector2 _endTouchPos;
+
+	private Vector2 _startDivePos;
 
 	void Awake()
 	{
 		// Find and assign references to components
 		_rb = GetComponent<Rigidbody2D>();
-		_sprite = GetComponent<tk2dSprite>();
 	}
 
 	void Start()
@@ -38,7 +43,7 @@ public class Player : MonoBehaviour
 		// Register to game events
 		GameController.Instance.OnPlayerBoost += Boost;
 		GameController.Instance.OnPlayerInputBlocked += (bool blocked) => { _isInputBlocked = blocked; };
-		GameController.Instance.OnPlayerSetVisible += (bool visible) => { GetComponent<MeshRenderer>().enabled = visible; };
+		GameController.Instance.OnPlayerSetVisible += (bool visible) => { _sprite.GetComponent<MeshRenderer>().enabled = visible; };
 
 		InputController.OnTouchBegan += TouchBegan;
 		InputController.OnTouchEnded += TouchEnded;
@@ -72,6 +77,17 @@ public class Player : MonoBehaviour
 	{
 		WorldUtils.StayInBounds(ref _rb);
 
+		// Temp: Gorilla animation and frame changes
+		if(_animator.Playing == false)
+		{
+			if(_rb.velocity.y > 8f) _sprite.SetSprite("G6");
+			else if(_rb.velocity.y > 0f) _sprite.SetSprite("G1");
+			else _sprite.SetSprite("G2");
+		}
+
+		// Turn side to side
+		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 0.5f;
+
 		Debug.DrawLine(_rb.position, _rb.position + _rb.velocity.normalized * 2.0f, Color.magenta);
 	}
 
@@ -83,25 +99,29 @@ public class Player : MonoBehaviour
 		else direction = Vector2.up;
 
 		// Check & update jumping state
-		if(jumpState != JumpState.Attack && Vector2.Dot(direction, Vector2.up) < 0)
+		if(_jumpState != JumpState.Attack && Vector2.Dot(direction, Vector2.up) < 0)
 		{
-			jumpState = JumpState.Attack;
-			_sprite.color = Color.red;
+			_jumpState = JumpState.Attack;
+			_startDivePos = _rb.position;
 			Jump(direction);
+
+			//_sprite.color = Color.red;
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Dive, 0.5f, 1f);
 		}
-		else if(jumpState == JumpState.Floating)
+		else if(_jumpState == JumpState.Floating)
 		{
-			jumpState = JumpState.FirstJump;
-			_sprite.color = new Color(0.25f, 0.75f, 0.25f);
+			_jumpState = JumpState.FirstJump;
 			Jump(direction);
+
+			//_sprite.color = new Color(0.25f, 0.75f, 0.25f);
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1f);
 		}
-		else if(jumpState == JumpState.FirstJump)
+		else if(_jumpState == JumpState.FirstJump)
 		{
-			jumpState = JumpState.SecondJump;
-			_sprite.color = Color.green;
+			_jumpState = JumpState.SecondJump;
 			Jump(direction);
+
+			//_sprite.color = Color.green;
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1.25f);
 		}
 	}
@@ -110,13 +130,15 @@ public class Player : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "Ground")
 		{
-			jumpState = JumpState.Floating;
+			_jumpState = JumpState.Floating;
 			_sprite.color = Color.white;
 		}
 	}
 
 	private void Jump(Vector3 dir, float magnitude = 1f)
 	{
+		//transform.rotation = Quaternion.AngleAxis(_rb.velocity.x * 5f, Vector3.forward);
+
 		_rb.velocity = Vector2.zero;
 		_rb.AddForce(dir * _settings.JumpHeight * magnitude, ForceMode2D.Impulse);
 
@@ -125,20 +147,26 @@ public class Player : MonoBehaviour
 
 	private void Boost(Vector3 dir, float magnitude = 1f)
 	{
-		_rb.angularVelocity = 0f;
-		_rb.AddTorque(-_rb.velocity.x * 0.8f, ForceMode2D.Impulse);
+		// Play gorilla smash animation
+		_animator.PlayFromFrame(0);
 
+		// Add upper force
 		_rb.velocity = new Vector2(_rb.velocity.x, 0f);
-		_rb.AddForce(dir * (_settings.JumpHeight * 2f) * magnitude, ForceMode2D.Impulse);
+		_rb.AddForce(dir * GameSettings.Instance.DamageSettings.Boost * magnitude, ForceMode2D.Impulse);
 
-		jumpState = JumpState.Floating;
+		// Reset the state; allow the player to jump again
+		_jumpState = JumpState.Floating;
 		_sprite.color = Color.white;
-
-		_sprite.SetSprite(string.Format("Turtle0{0}", Random.Range(1, 9)));
 	}
 
 	public Vector2 GetVelocity()
 	{
 		return _rb.velocity;
+	}
+
+	public Vector2 GetStartDivePos()
+	{
+		if(_jumpState == JumpState.Attack) return _startDivePos;
+		return _rb.position;
 	}
 }

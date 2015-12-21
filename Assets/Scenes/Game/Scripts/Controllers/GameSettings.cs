@@ -8,6 +8,7 @@ public class GameSettings : MonoBehaviour
 	public WorldSettings WorldSettings;
 	public PlayerSettings PlayerSettings;
 	public EnemySettings EnemySettings;
+	public DamageSettings DamageSettings;
 	public AudioSettings AudioSettings;
 
 	public static GameSettings Instance { get; private set; }
@@ -64,6 +65,12 @@ public class EnemySettings
 		settings.Health = original.Health;
 		return settings;
 	}
+}
+
+[System.Serializable]
+public class DamageSettings
+{
+	public float Boost = 8f;
 }
 
 [System.Serializable]
