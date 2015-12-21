@@ -25,6 +25,10 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
+  - assetGUID: b556ce99a153ccf41bc4848568440d20
+    dataGUID: 
+    managed: 0
+    loadable: 0
   fontIndex:
   - assetGUID: 063b15d80dbb4604d890600a64c79cf8
     dataGUID: e7a6b09a73c6b2b4f8060096ddbd3b5e
@@ -696,8 +700,8 @@ MonoBehaviour:
     spriteCollectionGUID: e45f602bfa4340a4ca995ce8f515e3d9
     spriteCollectionDataGUID: facfcf24431a26643aee0b2dc81d035c
     spriteNames:
-    - Goomba-Icon
-    - Bomb
+    - Goomba02_Static
+    - 
     - GoombaStatic
     - GoombaDead2
     - GoombaDead1
@@ -714,9 +718,17 @@ MonoBehaviour:
     - Turtle03
     - Turtle02
     - Dragon
+    - G1
+    - G4
+    - G3
+    - G6
+    - G5
+    - G2
+    - Goomba02_Dead2
+    - Goomba02_Dead1
     spriteTextureGUIDs:
-    - fba1ca9863cc773489c5d3b69306caf3
-    - 8c48a3363770f7b41878ee65e765be8f
+    - e1767671402cfac4a890297bab93e7f7
+    - 
     - 70f0dfb5dc5aff241aaa14977270e214
     - 9c7073fa73b95494f8ca669e267bbf6e
     - 356c1beee6774c746b4543dc174dd6ea
@@ -733,9 +745,17 @@ MonoBehaviour:
     - af51177fb6a812b49975a6b0e7a21ea7
     - 9d9c968fbc4641145903e833afb9b7c5
     - e5d6602b75f1eda4e8e8649febb164ef
+    - 3e5d55f80fca62e43a5c30c8dab5bb6e
+    - b167bb71845943c4aa1e42aa2c5df072
+    - d96f4c47c1f7e8a4887039db09660173
+    - 2ca6e81bda13ffc449bca9f1703e268a
+    - 9b0075dbe9b023d4d8cd57f0765dc9b0
+    - 23ff234cab78a9244aaf1c972c6b136a
+    - b504e2b1fa42d2043ad79a87781d51f3
+    - 38edbc2958c8541459fc011f86d8d0be
     spriteTextureTimeStamps:
-    - 1446308787.62926
-    - 1446324525.34855
+    - 1450732024.99435
+    - 0
     - 1450298604.09454
     - 1450298621.94122
     - 1450298616.06146
@@ -752,6 +772,14 @@ MonoBehaviour:
     - 1450403307.71901
     - 1450403296.5962
     - 1450637301.15037
+    - 1450656410.50248
+    - 1450656411.02669
+    - 1450656411.01893
+    - 1450656411.04245
+    - 1450656411.03643
+    - 1450656410.76114
+    - 1450732058.23571
+    - 1450732050.66408
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
