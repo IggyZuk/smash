@@ -713,6 +713,7 @@ MonoBehaviour:
     - Turtle08
     - Turtle03
     - Turtle02
+    - Dragon
     spriteTextureGUIDs:
     - fba1ca9863cc773489c5d3b69306caf3
     - 8c48a3363770f7b41878ee65e765be8f
@@ -731,6 +732,7 @@ MonoBehaviour:
     - bdd9486ddf0422e49865356e129237bd
     - af51177fb6a812b49975a6b0e7a21ea7
     - 9d9c968fbc4641145903e833afb9b7c5
+    - e5d6602b75f1eda4e8e8649febb164ef
     spriteTextureTimeStamps:
     - 1446308787.62926
     - 1446324525.34855
@@ -749,6 +751,7 @@ MonoBehaviour:
     - 1450403344.19224
     - 1450403307.71901
     - 1450403296.5962
+    - 1450637301.15037
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
