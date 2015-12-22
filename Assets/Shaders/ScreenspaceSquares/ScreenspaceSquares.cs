@@ -19,12 +19,8 @@ public class ScreenspaceSquares : MonoBehaviour
 
 	private Material _material;
 
-	private Player _player;
-
 	void Start()
 	{
-		_player = GameController.Instance.Player;
-
 		OnRenderImage(null, RenderTexture.active);
 	}
 
