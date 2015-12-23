@@ -50,8 +50,10 @@ Shader "Custom/ScreenspaceSquares"
 
 			half4 frag(v2f i) : COLOR
 			{
-				// Screen UV is offset by the camera position
 				float2 screenUV = i.screenPos.xy / i.screenPos.w;
+				float aspectRatio = _ScreenParams.x / _ScreenParams.y;
+
+				// Screen UV is offset by the camera position
 				screenUV.y += _Offset;
 
 				// Multiply background texture to the main texture
@@ -59,11 +61,11 @@ Shader "Custom/ScreenspaceSquares"
 
 				// Add more offset; this is used by the squares
 				screenUV += _Time.x;
-				screenUV *= float2(_Scale * _ScreenParams.x / _ScreenParams.y, _Scale);
+				screenUV *= float2(_Scale * aspectRatio, _Scale);
 
 				// Draw the squares
 				float scale = _ScreenParams.y;
-				float2 uv = floor(scale * screenUV * float2(_ScreenParams.x / _ScreenParams.y, 1) / _ScreenParams.xy);
+				float2 uv = floor(scale * screenUV * float2(aspectRatio, 1) / _ScreenParams.xy);
 				float colorValue = fmod(uv.x + uv.y, 2);
 				float4 squareColor = float4(lerp(_Color1, _Color2, colorValue));
 
