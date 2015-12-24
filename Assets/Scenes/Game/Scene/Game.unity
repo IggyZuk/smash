@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
   BackgroundTex: {fileID: 2800000, guid: 46a7d5c94ebd25847ad21c835793b30a, type: 3}
-  BackgroundColor: {r: 0.5808823, g: 1, b: 0.9132861, a: 1}
+  BackgroundColor: {r: 0.7941176, g: 1, b: 0.82109535, a: 1}
   Color1: {r: 1, g: 1, b: 1, a: 0}
   Color2: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 0}
   Scale: 16
