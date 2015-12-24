@@ -85,4 +85,5 @@ public class AudioSettings
 	public AudioClip Swipe;
 	public AudioClip Dive;
 	public AudioClip ScorePoint;
+	public AudioClip Lose;
 }

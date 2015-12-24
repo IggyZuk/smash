@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
 	private PlayerSettings _settings;
 
 	private bool _isInputBlocked = false;
+	private bool _isGameOver = false;
 
 	private string _playerSkinPrefix;
 
@@ -49,9 +51,6 @@ public class Player : MonoBehaviour
 		InputController.OnTouchBegan += TouchBegan;
 		InputController.OnTouchEnded += TouchEnded;
 
-		// We'll add the initial jump to get the game started
-		Jump(Vector2.up);
-
 		// FiFind the current player skin prefix for the sprites
 		_playerSkinPrefix = string.Format("Player0{0}", _settings.SkinIdx);
 	}
@@ -79,7 +78,6 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
-
 		if(_rb.velocity.y > 8f) _sprite.SetSprite(string.Format("{0}_Jump", _playerSkinPrefix));
 		else if(_rb.velocity.y > 0f) _sprite.SetSprite(string.Format("{0}_InAir", _playerSkinPrefix));
 		else if(_jumpState == JumpState.Attack) _sprite.SetSprite(string.Format("{0}_Dive", _playerSkinPrefix));
@@ -87,15 +85,35 @@ public class Player : MonoBehaviour
 		// Turn side to side
 		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 0.85f;
 
-		if(Camera.main.WorldToViewportPoint(this.transform.position).y < 0 - 0.25f)
+		if(Camera.main.WorldToViewportPoint(this.transform.position).y < 0 - 0.1f)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			Time.timeScale = 1f;
+			if(_isGameOver == false)
+			{
+				StartCoroutine(Lose_Coroutine(3.266f));
+				_isInputBlocked = true;
+			}
 		}
 
 		WorldUtils.StayInBounds(ref _rb);
 
 		Debug.DrawLine(_rb.position, _rb.position + _rb.velocity.normalized * 2.0f, Color.magenta);
+	}
+
+	private IEnumerator Lose_Coroutine(float time)
+	{
+		_isGameOver = true;
+
+		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Lose);
+
+		float t = 0f;
+		while(t < time)
+		{
+			t += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		Time.timeScale = 1f;
 	}
 
 	private void UpdateJumpState()
