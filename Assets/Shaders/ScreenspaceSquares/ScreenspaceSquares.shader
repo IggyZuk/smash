@@ -7,6 +7,7 @@ Shader "Custom/ScreenspaceSquares"
 		_Color1("Color1", Color) = (1,1,1,1)
 		_Color2("Color2", Color) = (0,0,0,1)
 		_Scale("Scale (Float)", Float) = 16
+		_TexScale("Texture Scale (Float)", Float) = 1
 		_Offset("Offset (Float)", Float) = 0
 	}
 
@@ -37,6 +38,7 @@ Shader "Custom/ScreenspaceSquares"
 			uniform float4 _Color1;
 			uniform float4 _Color2;
 			uniform float _Scale;
+			uniform float _TexScale;
 			uniform float _Offset;
 
 			v2f vert(appdata_img v)
@@ -57,7 +59,7 @@ Shader "Custom/ScreenspaceSquares"
 				screenUV.y += _Offset;
 
 				// Multiply background texture to the main texture
-				float4 color = tex2D(_BackgroundTex, screenUV) * _BackgroundColor;
+				float4 color = tex2D(_BackgroundTex, screenUV * _TexScale) * _BackgroundColor;
 
 				// Add more offset; this is used by the squares
 				screenUV += _Time.x;

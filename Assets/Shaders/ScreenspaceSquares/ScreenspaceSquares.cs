@@ -15,7 +15,10 @@ public class ScreenspaceSquares : MonoBehaviour
 	public Color Color2;
 
 	[Range(2, 64)]
-	public int Scale = 64;
+	public int Scale = 32;
+
+	[Range(1, 128)]
+	public int TextureScale = 1;
 
 	private Material _material;
 
@@ -52,6 +55,7 @@ public class ScreenspaceSquares : MonoBehaviour
 			mat.SetColor("_Color2", Color2);
 
 			mat.SetFloat("_Scale", Scale);
+			mat.SetFloat("_TexScale", TextureScale);
 			mat.SetFloat("_Offset", Camera.main.transform.position.y / 25f);
 		}
 	}
