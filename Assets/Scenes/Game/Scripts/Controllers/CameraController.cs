@@ -22,11 +22,6 @@ public class CameraController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		// Offset is used to position the camera in the inverse of the players velocity
-		// This allows the player to see more in the opposite direction
-		float vy = Mathf.Clamp(GameController.Instance.Player.GetVelocity().y, -5, 5f);
-		_offset = Vector2.Lerp(_offset, new Vector2(0f, -vy), VelocitySpeed * Time.deltaTime);
-
 		// Positioning the camera is a simple lerp on the Y axis
 		Vector3 movedPosition = Vector3.Lerp(this.transform.position, FollowObject.transform.position + (Vector3)_offset, Time.deltaTime * FollowSpeed);
 		transform.position = new Vector3(0f, movedPosition.y, transform.position.z);
