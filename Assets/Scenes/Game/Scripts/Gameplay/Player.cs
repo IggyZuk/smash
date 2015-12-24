@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -85,6 +86,12 @@ public class Player : MonoBehaviour
 
 		// Turn side to side
 		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 0.85f;
+
+		if(Camera.main.WorldToViewportPoint(this.transform.position).y < 0 - 0.25f)
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			Time.timeScale = 1f;
+		}
 
 		WorldUtils.StayInBounds(ref _rb);
 
