@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 40067000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1069212429}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
   _color: {r: 1, g: 0.81568635, b: 0.5411765, a: 1}
-  _scale: {x: 204, y: 100, z: 1}
+  _scale: {x: 204, y: 300, z: 1}
   _spriteId: 21
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
@@ -509,7 +509,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709294002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2999997, y: 3.638, z: 10}
+  m_LocalPosition: {x: -4.5499997, y: -5.488, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187429197}
@@ -538,9 +538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: -1
-  _anchorPoint: 6
+  _anchorPoint: 0
   anchorToNativeBounds: 0
-  offset: {x: 50, y: -225}
+  offset: {x: 25, y: 40}
   tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 1187429196}
 --- !u!114 &709294006
@@ -579,7 +579,7 @@ MonoBehaviour:
     textureGradient: 3
     anchor: 3
     renderLayer: 0
-    scale: {x: 5, y: 5, z: 1}
+    scale: {x: 4, y: 4, z: 1}
     kerning: 0
     maxChars: 32
     inlineStyling: 0
@@ -600,7 +600,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709294002}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -885,7 +885,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1069212425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 1}
+  m_LocalPosition: {x: 0, y: -2.17, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1912445152}
@@ -1038,6 +1038,7 @@ MonoBehaviour:
     Swipe: {fileID: 8300000, guid: e5cbf5acf569f8b40adaed1ad765caff, type: 3}
     Dive: {fileID: 8300000, guid: 8fc66f9a789050f418b0fb42aca34b8d, type: 3}
     ScorePoint: {fileID: 8300000, guid: 18b99bccce668914d990d7a0bc2117d8, type: 3}
+    Lose: {fileID: 8300000, guid: 11642fb9b7d931949991791857b3b095, type: 3}
 --- !u!4 &1169339844
 Transform:
   m_ObjectHideFlags: 0
@@ -1224,23 +1225,25 @@ MonoBehaviour:
   Color1: {r: 1, g: 1, b: 1, a: 0}
   Color2: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 0}
   Scale: 64
+  TextureScale: 1
 --- !u!114 &1202881757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202881755}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb57b3a1a0c5244ea09d4179e14f6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
-  BackgroundTex: {fileID: 2800000, guid: 94869b70c691e48a4b2a304527956a5b, type: 3}
-  BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  BackgroundTex: {fileID: 2800000, guid: 46a7d5c94ebd25847ad21c835793b30a, type: 3}
+  BackgroundColor: {r: 0.5808823, g: 1, b: 0.9132861, a: 1}
   Color1: {r: 1, g: 1, b: 1, a: 0}
-  Color2: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 0}
-  Scale: 32
+  Color2: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 0}
+  Scale: 16
+  TextureScale: 32
 --- !u!114 &1202881758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,6 +1261,7 @@ MonoBehaviour:
   Color1: {r: 1, g: 1, b: 1, a: 0}
   Color2: {r: 0.9191176, g: 0.9191176, b: 0.9191176, a: 0}
   Scale: 35
+  TextureScale: 1
 --- !u!20 &1202881760
 Camera:
   m_ObjectHideFlags: 0
@@ -1310,17 +1314,18 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202881755}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb57b3a1a0c5244ea09d4179e14f6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
   BackgroundTex: {fileID: 0}
-  BackgroundColor: {r: 0.08605622, g: 0.03211505, b: 0.19852942, a: 0}
+  BackgroundColor: {r: 1, g: 0.9034483, b: 0.5, a: 0}
   Color1: {r: 1, g: 1, b: 1, a: 0}
-  Color2: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 0}
+  Color2: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 0}
   Scale: 35
+  TextureScale: 1
 --- !u!4 &1721873002 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434844, guid: dc2cc38a36fe01f40a16016e33521195, type: 2}
@@ -1364,6 +1369,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19971240, guid: dc2cc38a36fe01f40a16016e33521195, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b92ad070b90aa4a5bbb0535dda5a4e84, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc2cc38a36fe01f40a16016e33521195, type: 2}
   m_IsPrefabParent: 0
@@ -1428,7 +1437,7 @@ MonoBehaviour:
     version: 1
     font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
     text: 0m
-    color: {r: 1, g: 1, b: 1, a: 0.228}
+    color: {r: 1, g: 1, b: 1, a: 0.5019608}
     color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 3
@@ -1606,9 +1615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 2024444199}
-  FollowSpeed: 5
-  VelocitySpeed: 1.5
-  Offset: -1.5
+  FollowSpeed: 8
+  Offset: -2
   Status: {fileID: 2034951377}
 --- !u!4 &1967639885
 Transform:
@@ -1670,6 +1678,10 @@ Prefab:
     - target: {fileID: 3352700, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888570, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
+      propertyPath: m_Radius
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}

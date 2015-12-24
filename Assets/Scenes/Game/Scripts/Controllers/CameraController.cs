@@ -5,7 +5,6 @@ public class CameraController : MonoBehaviour
 {
 	public GameObject FollowObject = null;
 	public float FollowSpeed = 5.0f;
-	public float VelocitySpeed = 2.0f;
 	public float Offset = -1.5f;
 
 	private Camera _cam;
