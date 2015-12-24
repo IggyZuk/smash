@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 335422342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 586409445}
@@ -375,7 +375,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 586409441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.68, z: 0}
+  m_LocalPosition: {x: 0, y: 3.388, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 335422343}
@@ -394,7 +394,7 @@ MonoBehaviour:
   anchor: -1
   _anchorPoint: 7
   anchorToNativeBounds: 0
-  offset: {x: 0, y: -300}
+  offset: {x: 0, y: -250}
   tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 693186167}
 --- !u!1 &693186161
@@ -571,7 +571,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 989319396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.68, z: 0}
+  m_LocalPosition: {x: 0, y: -3.388, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 38930388}
@@ -591,7 +591,7 @@ MonoBehaviour:
   anchor: -1
   _anchorPoint: 1
   anchorToNativeBounds: 0
-  offset: {x: 0, y: 300}
+  offset: {x: 0, y: 250}
   tk2dCamera: {fileID: 0}
   _anchorCamera: {fileID: 693186167}
 --- !u!114 &989319400
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016208578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: -6.93, z: 0}
+  m_LocalPosition: {x: -4.2999997, y: -5.138, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 335422343}

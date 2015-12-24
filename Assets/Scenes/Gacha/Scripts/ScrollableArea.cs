@@ -71,7 +71,7 @@ namespace Gacha
 			if(_isDragging)
 			{
 				float newPosX = (pos.x - _startPosX) / 50f;
-				Content.position = new Vector3(newPosX + _contentLastPosX, 0f, 0f);
+				Content.position = Vector3.right * (newPosX + _contentLastPosX);
 				_lastFramePosX = pos.x;
 			}
 		}
@@ -111,10 +111,10 @@ namespace Gacha
 			if(_isDragging == false)
 			{
 				// Smooth movement
-				_velocity -= _velocity * 3.5f * Time.deltaTime;
+				_velocity -= _velocity * 5f * Time.deltaTime;
 				Content.position += Vector3.right * _velocity;
 
-				float m = (1f - Mathf.Abs(_velocity)) * 0.25f;
+				float m = (1f - Mathf.Abs(_velocity)) * 0.1f;
 
 				// Snap onto the closest item
 				Content.position = Vector3.Lerp(Content.position, (Vector3.left * closestItem.Transform.localPosition.x), m);
