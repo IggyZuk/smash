@@ -29,6 +29,10 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
+  - assetGUID: 8440a3d40733c374a8ce71e1d8d17934
+    dataGUID: 
+    managed: 0
+    loadable: 0
   fontIndex:
   - assetGUID: 063b15d80dbb4604d890600a64c79cf8
     dataGUID: e7a6b09a73c6b2b4f8060096ddbd3b5e
@@ -701,22 +705,22 @@ MonoBehaviour:
     spriteCollectionDataGUID: facfcf24431a26643aee0b2dc81d035c
     spriteNames:
     - Goomba02_Static
-    - 
+    - Ground01
     - GoombaStatic
     - GoombaDead2
     - GoombaDead1
     - Ground
-    - Turtle01
+    - BirdGoggles
     - Bone
     - SpringSprite
-    - Turtle07
-    - Turtle04
-    - Turtle09
-    - Turtle06
-    - Turtle05
-    - Turtle08
-    - Turtle03
-    - Turtle02
+    - BirdFeather
+    - Bird_Dead
+    - Bird_Fly01
+    - Bird_Fly02
+    - Player02_Jump
+    - Player02_InAir
+    - Player02_Static
+    - Player02_Dive
     - Dragon
     - G1
     - G4
@@ -726,24 +730,32 @@ MonoBehaviour:
     - G2
     - Goomba02_Dead2
     - Goomba02_Dead1
+    - Player01_InAir
+    - Player01_Drop
+    - Player01_Static
+    - Player01_Dive
+    - Player01_Slam
+    - Player01_Jump
+    - GroundBush
+    - Cloud
     spriteTextureGUIDs:
     - e1767671402cfac4a890297bab93e7f7
-    - 
+    - fe6f85919321dae4daf02dcf6b775bc7
     - 70f0dfb5dc5aff241aaa14977270e214
     - 9c7073fa73b95494f8ca669e267bbf6e
     - 356c1beee6774c746b4543dc174dd6ea
     - e59bd735eb72ca7488f3e8238830fc2a
-    - e5c6184254070604e927b3b1a707f819
+    - 1332e9e4b6af5e64b99a18fa5cb4fad5
     - dacf3872aa02c6a408572466fed43f47
     - 08f40f5fef3af7b4891dc41023f8a31c
-    - bb76355637f224f4bb4767d5a3bc71b6
-    - 6ee0ef28aa4904a418289c8d4d8c1407
-    - 00040a9aa55862d4e93602ff5ba3a58c
-    - 8ff2e90b85180f048ae29a40fbbc8268
-    - 33556b8cd7697ba4dab9524cf41dcdde
-    - bdd9486ddf0422e49865356e129237bd
-    - af51177fb6a812b49975a6b0e7a21ea7
-    - 9d9c968fbc4641145903e833afb9b7c5
+    - 144be519bcae0dc46a859d169170bd76
+    - 3d7574a936a5b024485bae11f4178cdf
+    - bb9904dae9b029b4dae6d6a5603060c3
+    - b5c1e49c24dd1f34d84f15ea057076cd
+    - d6b64dd2c030275409984e8a36e68001
+    - b13da3c8f86e2f249a2e56da820e195b
+    - 21c91f4c5058da94f8b7fce529872371
+    - 55e387ed27441e74eb46565cda490f9a
     - e5d6602b75f1eda4e8e8649febb164ef
     - 3e5d55f80fca62e43a5c30c8dab5bb6e
     - b167bb71845943c4aa1e42aa2c5df072
@@ -753,24 +765,32 @@ MonoBehaviour:
     - 23ff234cab78a9244aaf1c972c6b136a
     - b504e2b1fa42d2043ad79a87781d51f3
     - 38edbc2958c8541459fc011f86d8d0be
+    - fad411a1fdab61641ae43d546d697ed4
+    - 3a427d0755b377b4ea504e81f8b6695b
+    - b4aa51f801537ef41835bae6dec28ed3
+    - ce5cf2aaa2e41de4c885aad19b83da6f
+    - bb166c7cfd1d68d448fe4e2a2ab316e1
+    - e8b6ce1e1f85fb64f968f040aeb1880b
+    - 4427d90b523e5794cbe98d6c8f80bed2
+    - 67fb3e2b8c9f99147b7387127607e8c8
     spriteTextureTimeStamps:
     - 1450732024.99435
-    - 0
+    - 1450881055.41735
     - 1450298604.09454
     - 1450298621.94122
     - 1450298616.06146
     - 1450301481.37879
-    - 1450403289.34687
+    - 1450882833.67369
     - 1450359028.73207
     - 1425148128
-    - 1450403338.29546
-    - 1450403317.34371
-    - 1450403350.16559
-    - 1450403332.57538
-    - 1450403325.59303
-    - 1450403344.19224
-    - 1450403307.71901
-    - 1450403296.5962
+    - 1450882854.33402
+    - 1450887711.41926
+    - 1450882785.27331
+    - 1450887680.93874
+    - 1450886848.05248
+    - 1450886854.65953
+    - 1450886833.48172
+    - 1450886826.10544
     - 1450637301.15037
     - 1450656410.50248
     - 1450656411.02669
@@ -780,6 +800,14 @@ MonoBehaviour:
     - 1450656410.76114
     - 1450732058.23571
     - 1450732050.66408
+    - 1450882389.38606
+    - 1450882420.98944
+    - 1450882405.15921
+    - 1450882413.07154
+    - 1450882428.89407
+    - 1450882371.49675
+    - 1450888038.6714
+    - 1450888093.70462
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
