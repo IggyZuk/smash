@@ -12,7 +12,7 @@ public class GoalSystem : MonoBehaviour
 
 	private float _maxHeight = 0f;
 	private float _deltaPosition = 10.0f;
-	private const float ADD_ENTITY_DISTANCE = 13.5f;
+	private const float ADD_ENTITY_DISTANCE = 14.5f;
 
 	private int _count = 0;
 	private float _nextHeight = Mathf.NegativeInfinity;
