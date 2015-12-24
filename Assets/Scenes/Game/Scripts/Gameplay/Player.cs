@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 		// We'll add the initial jump to get the game started
 		Jump(Vector2.up);
 
-		// Find the current player skin prefix for the sprites
+		// FiFind the current player skin prefix for the sprites
 		_playerSkinPrefix = string.Format("Player0{0}", _settings.SkinIdx);
 	}
 
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
 		else if(_jumpState == JumpState.Attack) _sprite.SetSprite(string.Format("{0}_Dive", _playerSkinPrefix));
 
 		// Turn side to side
-		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up);
+		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 0.85f;
 
 		WorldUtils.StayInBounds(ref _rb);
 

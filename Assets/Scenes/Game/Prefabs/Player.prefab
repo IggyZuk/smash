@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3352700}
   - 23: {fileID: 2396100}
   - 114: {fileID: 11464192}
-  - 114: {fileID: 11425214}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -168,20 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 11464192}
---- !u!114 &11425214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: {fileID: 11484880, guid: b556ce99a153ccf41bc4848568440d20, type: 2}
-  defaultClipId: 0
-  playAutomatically: 0
 --- !u!114 &11464192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,8 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11493550, guid: facfcf24431a26643aee0b2dc81d035c, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 0.5, y: 0.5, z: 1}
-  _spriteId: 18
+  _scale: {x: 0.85, y: 0.85, z: 1}
+  _spriteId: 15
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
