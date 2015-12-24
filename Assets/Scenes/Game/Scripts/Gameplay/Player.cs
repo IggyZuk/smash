@@ -5,14 +5,14 @@ public class Player : MonoBehaviour
 {
 	[SerializeField]
 	private tk2dSprite _sprite;
-	[SerializeField]
-	private tk2dSpriteAnimator _animator;
 
 	private Rigidbody2D _rb;
 
 	private PlayerSettings _settings;
 
 	private bool _isInputBlocked = false;
+
+	private string _playerSkinPrefix;
 
 	private enum JumpState
 	{
@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
 
 		// We'll add the initial jump to get the game started
 		Jump(Vector2.up);
+
+		// Find the current player skin prefix for the sprites
+		_playerSkinPrefix = string.Format("Player0{0}", _settings.SkinIdx);
 	}
 
 	void OnDestroy()
@@ -75,18 +78,15 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		WorldUtils.StayInBounds(ref _rb);
 
-		// Temp: Gorilla animation and frame changes
-		if(_animator.Playing == false)
-		{
-			if(_rb.velocity.y > 8f) _sprite.SetSprite("G6");
-			else if(_rb.velocity.y > 0f) _sprite.SetSprite("G1");
-			else _sprite.SetSprite("G2");
-		}
+		if(_rb.velocity.y > 8f) _sprite.SetSprite(string.Format("{0}_Jump", _playerSkinPrefix));
+		else if(_rb.velocity.y > 0f) _sprite.SetSprite(string.Format("{0}_InAir", _playerSkinPrefix));
+		else if(_jumpState == JumpState.Attack) _sprite.SetSprite(string.Format("{0}_Dive", _playerSkinPrefix));
 
 		// Turn side to side
-		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 0.5f;
+		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up);
+
+		WorldUtils.StayInBounds(ref _rb);
 
 		Debug.DrawLine(_rb.position, _rb.position + _rb.velocity.normalized * 2.0f, Color.magenta);
 	}
@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
 		{
 			_jumpState = JumpState.Floating;
 			_sprite.color = Color.white;
+			_sprite.SetSprite(string.Format("{0}_Static", _playerSkinPrefix));
 		}
 	}
 
@@ -147,9 +148,6 @@ public class Player : MonoBehaviour
 
 	private void Boost(Vector3 dir, float magnitude = 1f)
 	{
-		// Play gorilla smash animation
-		_animator.PlayFromFrame(0);
-
 		// Add upper force
 		_rb.velocity = new Vector2(_rb.velocity.x, 0f);
 		_rb.AddForce(dir * GameSettings.Instance.DamageSettings.Boost * magnitude, ForceMode2D.Impulse);

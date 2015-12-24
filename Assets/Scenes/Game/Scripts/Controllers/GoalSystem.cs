@@ -60,12 +60,13 @@ public class GoalSystem : MonoBehaviour
 				entityPosition.x = Random.Range(WorldUtils.GetLeftEdge() + 1f, WorldUtils.GetRightEdge() - 1f);
 				entityPosition.y += 10f;
 
-				GameObject entity;
+				GameObject entity = GameSettings.Instance.Prefabs.Enemy;
+
 				if(Random.value < 0.85f)
 				{
 					entity = GameSettings.Instance.Prefabs.Enemy;
 				}
-				else
+				if(Random.value < 0.25f)
 				{
 					entity = GameSettings.Instance.Prefabs.Barrel;
 				}
@@ -82,7 +83,7 @@ public class GoalSystem : MonoBehaviour
 			if(score > _scoreValue)
 			{
 				_scoreValue = score;
-				ScoreText.text = string.Format("Height: {0}m", score);
+				ScoreText.text = string.Format("{0}m", score);
 				StartCoroutine(EmphasizeScore_Coroutine(0.25f));
 				_scorePitch = (_playerTransform.position.y - _lastHeight) / (_nextHeight - _lastHeight) + 1f * 0.5f;
 				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.ScorePoint, 0.25f, _scorePitch);

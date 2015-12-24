@@ -52,6 +52,7 @@ public class WorldSettings
 public class PlayerSettings
 {
 	public float JumpHeight = 5f;
+	public int SkinIdx = 1;
 }
 
 [System.Serializable]

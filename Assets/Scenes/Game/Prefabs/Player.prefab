@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 11464192}
-  _animator: {fileID: 11425214}
 --- !u!114 &11425214
 MonoBehaviour:
   m_ObjectHideFlags: 1
