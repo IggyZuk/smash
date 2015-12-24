@@ -350,10 +350,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 11405018, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
-      propertyPath: _spriteId
-      value: 11
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
   m_IsPrefabParent: 0
@@ -1028,7 +1024,7 @@ MonoBehaviour:
     SlowMotionWait: 1
   PlayerSettings:
     JumpHeight: 5
-    SkinIdx: 1
+    SkinIdx: 2
   EnemySettings:
     Health: 2
   DamageSettings:
@@ -1610,7 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 2024444199}
-  FollowSpeed: 20
+  FollowSpeed: 5
   VelocitySpeed: 1.5
   Status: {fileID: 2034951377}
 --- !u!4 &1967639885
@@ -1674,28 +1670,7 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 11464192, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
-      propertyPath: _scale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11464192, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
-      propertyPath: _scale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11464192, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
-      propertyPath: _spriteId
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 472048, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 107734, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11425214, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2024444199 stripped

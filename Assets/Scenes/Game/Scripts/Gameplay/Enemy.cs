@@ -50,9 +50,6 @@ public class Enemy : MonoBehaviour
 			Debug.DrawLine(transform.position, transform.position + (Vector3)_rb.velocity);
 		}
 
-		// Turn side to side
-		_sprite.scale = (Vector3.left * Mathf.Sign(_rb.velocity.x) + Vector3.up);
-
 		WorldUtils.StayInBounds(ref _rb);
 
 		Debug.DrawLine(_rb.position, _rb.position + _rb.velocity.normalized * 2.0f, Color.magenta);
@@ -68,16 +65,16 @@ public class Enemy : MonoBehaviour
 			float damageValue = 1f - (float)(_settingsModified.Health - 1) / (float)_settings.Health;
 			float boost = Mathf.Lerp(0.5f, 1f, damageValue);
 
-			_rb.gravityScale = 0.75f;
+			_rb.gravityScale = 0.5f;
 
 			Vector2 vel = GameController.Instance.Player.GetVelocity();
-			vel.x *= 1.25f;
+			vel.x += _rb.velocity.x;
 			vel.y = GameSettings.Instance.DamageSettings.Boost * 0.5f;
 
 			_rb.velocity = Vector2.zero;
 			_rb.AddForce(vel, ForceMode2D.Impulse);
 
-			_sprite.SetSprite("Bird_Dead");
+			_sprite.SetSprite(Random.value < 0.5 ? "GoombaDead1" : "GoombaDead2");
 
 			VisualUtils.AddHit(this.transform.position);
 
@@ -99,9 +96,6 @@ public class Enemy : MonoBehaviour
 
 				GameController.Instance.OnPlayerBoost(Vector3.up, boost);
 
-				// On the first hit let's stop bird's flying animation
-				_sprite.GetComponent<tk2dSpriteAnimator>().Stop();
-
 				// Also let's add goggles
 				GameObject go = GameObject.Instantiate(GameSettings.Instance.Prefabs.Bone, this.transform.position, Quaternion.AngleAxis(Random.value * 360f, Vector3.forward)) as GameObject;
 				Rigidbody2D boneRigidbody = go.GetComponent<Rigidbody2D>();
@@ -120,8 +114,19 @@ public class Enemy : MonoBehaviour
 	{
 		VisualUtils.AddExplosion(this.transform.position);
 
-		GetComponentInChildren<ParticleSystem>().transform.SetParent(null);
+		for(int i = 0; i < 6; ++i)
+		{
+			GameObject go = GameObject.Instantiate(GameSettings.Instance.Prefabs.Bone, this.transform.position, Quaternion.AngleAxis(Random.value * 360f, Vector3.forward)) as GameObject;
+			Rigidbody2D boneRigidbody = go.GetComponent<Rigidbody2D>();
 
+			Vector2 vel = new Vector2(Random.Range(-20f, 20f), Random.value * 20f);
+			boneRigidbody.AddForce(vel, ForceMode2D.Impulse);
+
+			boneRigidbody.angularVelocity = 0.0f;
+			boneRigidbody.AddTorque(-boneRigidbody.velocity.x * 0.8f, ForceMode2D.Impulse);
+		}
+
+		GetComponentInChildren<ParticleSystem>().transform.SetParent(null);
 		GameObject.Destroy(this.gameObject);
 	}
 }

@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3334872}
   - 23: {fileID: 2333842}
   - 114: {fileID: 11405018}
-  - 114: {fileID: 11427996}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -155,7 +154,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.6
 --- !u!114 &11405018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +169,7 @@ MonoBehaviour:
   collection: {fileID: 11493550, guid: facfcf24431a26643aee0b2dc81d035c, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 11
+  _spriteId: 2
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
@@ -191,20 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 11405018}
---- !u!114 &11427996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  library: {fileID: 11401082, guid: 8440a3d40733c374a8ce71e1d8d17934, type: 2}
-  defaultClipId: 0
-  playAutomatically: 1
 --- !u!198 &19876698
 ParticleSystem:
   m_ObjectHideFlags: 1
