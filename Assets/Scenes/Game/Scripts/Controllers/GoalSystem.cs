@@ -84,7 +84,7 @@ public class GoalSystem : MonoBehaviour
 			{
 				_scoreValue = score;
 				ScoreText.text = string.Format("{0}m", score);
-				StartCoroutine(EmphasizeScore_Coroutine(0.25f));
+				StartCoroutine(EmphasizeScore_Coroutine(0.1f));
 				_scorePitch = (_playerTransform.position.y - _lastHeight) / (_nextHeight - _lastHeight) + 1f * 0.5f;
 				GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.ScorePoint, 0.25f, _scorePitch);
 			}
