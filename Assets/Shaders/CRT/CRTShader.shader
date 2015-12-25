@@ -66,7 +66,7 @@ Shader "Custom/CRTShader"
 					float2 ps = i.scr_pos.xy * _ScreenParams.xy / i.scr_pos.w;
 
 					uv.x = (floor(ps.x / _PixelSize) / _ScreenParams.x) * _PixelSize;
-					uv.y = 1 - (floor(ps.y / _PixelSize) / _ScreenParams.y) * _PixelSize;
+					uv.y = (floor(ps.y / _PixelSize) / _ScreenParams.y) * _PixelSize;
 
 					//uv.y = floor(i.scr_pos.y / 2) * _ScreenParams.y;
 

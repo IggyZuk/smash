@@ -379,7 +379,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614044856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: 6.18, z: 10}
+  m_LocalPosition: {x: -4.2999997, y: 4.388, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187429197}
@@ -509,7 +509,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709294002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.55, y: -7.2799997, z: 10}
+  m_LocalPosition: {x: -4.5499997, y: -5.488, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187429197}
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   viewportRegion: {x: 0, y: 0, z: 100, w: 100}
   zoomFactor: 1
   forceResolutionInEditor: 1
-  forceResolution: {x: 800, y: 1280}
+  forceResolution: {x: 750, y: 920}
 --- !u!20 &1187429196
 Camera:
   m_ObjectHideFlags: 3
@@ -1194,8 +1194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 84c5de5da52dfea4686a1dea429b2ae0, type: 3}
-  PixelColor: {r: 0, g: 0.04153145, b: 0.066176474, a: 1}
-  PixelSize: 4
+  PixelColor: {r: 1, g: 1, b: 1, a: 1}
+  PixelSize: 8
 --- !u!81 &1187429199
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1216,6 +1216,7 @@ GameObject:
   - 114: {fileID: 1202881762}
   - 114: {fileID: 1202881756}
   - 114: {fileID: 1202881757}
+  - 114: {fileID: 1202881759}
   m_Layer: 0
   m_Name: BackgroundCamera
   m_TagString: Untagged
@@ -1238,7 +1239,7 @@ MonoBehaviour:
   BackgroundTex: {fileID: 2800000, guid: d3c6975d216101b469afc2dba66cfd6a, type: 3}
   BackgroundColor: {r: 0.09406692, g: 0, b: 0.3897059, a: 1}
   Color1: {r: 1, g: 1, b: 1, a: 0}
-  Color2: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 0}
+  Color2: {r: 0.8745099, g: 0.8745099, b: 0.8745099, a: 0}
   Scale: 64
   TextureScale: 1
 --- !u!114 &1202881757
@@ -1255,10 +1256,10 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
   BackgroundTex: {fileID: 2800000, guid: 46a7d5c94ebd25847ad21c835793b30a, type: 3}
   BackgroundColor: {r: 1, g: 0.96876264, b: 0.7941176, a: 1}
-  Color1: {r: 1, g: 1, b: 1, a: 0}
+  Color1: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 0}
   Color2: {r: 0.9264706, g: 0.9264706, b: 0.9264706, a: 0}
-  Scale: 16
-  TextureScale: 32
+  Scale: 4
+  TextureScale: 1
 --- !u!114 &1202881758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,10 +1274,24 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 04e1a7bd39a2e55418b1a350c307c8d7, type: 3}
   BackgroundTex: {fileID: 2800000, guid: 01d5449352977f74293b833fb2fd7ef0, type: 3}
   BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  Color1: {r: 1, g: 1, b: 1, a: 0}
-  Color2: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 0}
-  Scale: 24
+  Color1: {r: 0.875, g: 0.875, b: 0.875, a: 0}
+  Color2: {r: 1, g: 1, b: 1, a: 0}
+  Scale: 16
   TextureScale: 2
+--- !u!114 &1202881759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202881755}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c616cc573b9994fa13bb5d3e9e5c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 84c5de5da52dfea4686a1dea429b2ae0, type: 3}
+  PixelColor: {r: 1, g: 1, b: 1, a: 1}
+  PixelSize: 4
 --- !u!20 &1202881760
 Camera:
   m_ObjectHideFlags: 0
@@ -1651,7 +1666,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1840318676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.93, z: 10}
+  m_LocalPosition: {x: 0, y: 4.138, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1187429197}
