@@ -7,9 +7,9 @@ public class CameraController : MonoBehaviour
 	public float FollowSpeed = 5.0f;
 	public float Offset = -1.5f;
 
-	private Camera _cam;
-
 	public ParticleSystem Status;
+
+	private Camera _cam;
 
 	private float _highestPoint = 0f;
 	private float _followSpeed = 0f;

@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
 			if(_isGameOver == false)
 			{
 				StartCoroutine(Lose_Coroutine(3.266f));
+				_isGameOver = true;
 				_isInputBlocked = true;
 			}
 		}
@@ -101,8 +102,6 @@ public class Player : MonoBehaviour
 
 	private IEnumerator Lose_Coroutine(float time)
 	{
-		_isGameOver = true;
-
 		GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Lose);
 
 		float t = 0f;

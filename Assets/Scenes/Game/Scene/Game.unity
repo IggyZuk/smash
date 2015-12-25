@@ -649,6 +649,7 @@ Transform:
   - {fileID: 2024444205}
   - {fileID: 482503022}
   - {fileID: 704337265}
+  - {fileID: 1204129073}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1 &826424278
@@ -1195,7 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 84c5de5da52dfea4686a1dea429b2ae0, type: 3}
   PixelColor: {r: 1, g: 1, b: 1, a: 1}
-  PixelSize: 8
+  PixelSize: 16
 --- !u!81 &1187429199
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1291,7 +1292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 84c5de5da52dfea4686a1dea429b2ae0, type: 3}
   PixelColor: {r: 1, g: 1, b: 1, a: 1}
-  PixelSize: 4
+  PixelSize: 16
 --- !u!20 &1202881760
 Camera:
   m_ObjectHideFlags: 0
@@ -1368,7 +1369,7 @@ GameObject:
   - 33: {fileID: 1204129071}
   - 114: {fileID: 1204129070}
   m_Layer: 0
-  m_Name: Sprite0
+  m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1440,8 +1441,8 @@ Transform:
   m_LocalPosition: {x: 0.8163837, y: 5.09, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 742226186}
+  m_RootOrder: 4
 --- !u!4 &1721873002 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434844, guid: dc2cc38a36fe01f40a16016e33521195, type: 2}
@@ -1954,6 +1955,14 @@ Prefab:
     - target: {fileID: 11464192, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
       propertyPath: _scale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410060, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
+      propertyPath: _rt
+      value: 
+      objectReference: {fileID: 8400000, guid: 6e9ecd13d228f994f81f5f52971f3576, type: 2}
+    - target: {fileID: 11410060, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
+      propertyPath: _texture
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
