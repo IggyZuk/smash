@@ -7,8 +7,11 @@ public class TVShader : MonoBehaviour
 {
 	public Shader shader;
 	private Material _material;
-	[Range(2, 64)]
-	public float pixle_size = 64.0f;
+
+	public Color PixelColor = Color.white;
+
+	[Range(1, 64)]
+	public float PixelSize = 64.0f;
 
 	protected Material material
 	{
@@ -29,7 +32,8 @@ public class TVShader : MonoBehaviour
 		Material mat = material;
 		Graphics.Blit(source, destination, mat);
 
-		mat.SetFloat("_PixelSize", pixle_size);
+		mat.SetColor("_PixelColor", PixelColor);
+		mat.SetFloat("_PixelSize", PixelSize);
 	}
 
 	void OnDisable()
