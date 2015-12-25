@@ -152,7 +152,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.15}
   serializedVersion: 2
   m_Radius: 0.6
 --- !u!114 &11405018
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11493550, guid: facfcf24431a26643aee0b2dc81d035c, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 1, y: 1, z: 1}
+  _scale: {x: 1.25, y: 1.25, z: 1}
   _spriteId: 2
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
