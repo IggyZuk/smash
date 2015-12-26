@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
 	{
 		_cam = Camera.main;
 
+		_highestPoint = this.transform.position.y;
+
 		Status.Stop();
 	}
 
@@ -26,15 +28,15 @@ public class CameraController : MonoBehaviour
 		Vector3 followPos = FollowObject.transform.position;
 
 		// Allow the camera to only move up
-		if(followPos.y > _highestPoint) _highestPoint = followPos.y;
-		else followPos.y = _highestPoint;
+		_highestPoint = Mathf.Max(_highestPoint, followPos.y + Offset);
+		followPos.y = Mathf.Max(_highestPoint, followPos.y + Offset);
 
 		// Camera move speed is defined by the distance of the player from the center of the screen
 		float distance = _cam.WorldToViewportPoint(GameController.Instance.Player.transform.position).y;
 		float moveSpeed = Mathf.Lerp(0f, FollowSpeed, distance);
 
 		// Positioning the camera is a simple lerp on the Y axis
-		Vector3 movedPosition = Vector3.Lerp(this.transform.position, followPos + (Vector3.up * Offset), moveSpeed * Time.deltaTime);
+		Vector3 movedPosition = Vector3.Lerp(this.transform.position, followPos, moveSpeed * Time.deltaTime);
 		transform.position = new Vector3(0f, movedPosition.y, transform.position.z);
 	}
 
