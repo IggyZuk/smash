@@ -812,3 +812,52 @@ MonoBehaviour:
     loadable: 0
     assetName: 
     version: 3
+  - name: UI_SpriteCollection
+    spriteCollectionGUID: 1ad9c60722664f745b9c83a21a8837f6
+    spriteCollectionDataGUID: a311e9dd54bf5604094b925051285be8
+    spriteNames:
+    - settings
+    - settingsbutton
+    - play
+    - settings_button
+    - wood_button
+    - cog_icon
+    - play128
+    - arrow626
+    - play6
+    - gears10
+    - pause52
+    - video3
+    - pause36
+    spriteTextureGUIDs:
+    - 876d00fcf30943346911146bc1149fc4
+    - bb9c20fad3fffd942995e95385bbf49a
+    - ed174ed1576fcaf469cdbf19553ab61d
+    - 3fb64b0bdc58d564c945fa3c6becde76
+    - cf27eb0f6dcf77148bb83e80e893b652
+    - 86475b93d50274940a08ef7c83e6d595
+    - 1461112bd138d5948a335f15bca44bfa
+    - 6161fbab6adae0347a79080fb378171b
+    - 64b3b7df36f71ce4fab37c479fbdfc53
+    - 96d7bb3e6f3141046b11c06620b3e6da
+    - 968955c8dc94460478321b198c128a6c
+    - acdc4b754d5d4e243b0af733602a064f
+    - 92d1fb9e450d11c4eaf0e278dc0a0e7c
+    spriteTextureTimeStamps:
+    - 1451142269.21126
+    - 1451146015.53026
+    - 1451142225.54614
+    - 1451146338.88762
+    - 1451146796.23991
+    - 1451146994.97328
+    - 1451147232.30498
+    - 1451147323.97955
+    - 1451147469.2001
+    - 1451147504.94755
+    - 1451155036.05707
+    - 1451155211.52695
+    - 1451155381.50868
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
