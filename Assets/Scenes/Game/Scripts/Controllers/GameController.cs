@@ -99,6 +99,11 @@ public class GameController : MonoBehaviour
 		usableSource.Play();
 	}
 
+	public void StartRound()
+	{
+		_settingsButton.gameObject.SetActive(false);
+	}
+
 	public void TogglePause()
 	{
 		IsPaused = !IsPaused;

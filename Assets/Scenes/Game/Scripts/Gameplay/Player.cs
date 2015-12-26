@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
 	private JumpState _jumpState = JumpState.Floating;
 
+	private bool _isTouchValid = false;
 	private Vector2 _startTouchPos;
 	private Vector2 _endTouchPos;
 
@@ -65,16 +66,30 @@ public class Player : MonoBehaviour
 
 	public void TouchBegan(Vector2 touchPosition)
 	{
-		_startTouchPos = touchPosition;
+		if(_isInputBlocked) return;
+
+		// If the player presses on any UI items let's not jump
+		RaycastHit hit;
+		Physics.Raycast(Camera.main.ScreenPointToRay(touchPosition), out hit, 20f, 1 << LayerMask.NameToLayer("UI"));
+
+		if(hit.collider == null)
+		{
+			_isTouchValid = true;
+			_startTouchPos = touchPosition;
+		}
+
 	}
 
 	public void TouchEnded(Vector2 touchPosition)
 	{
 		if(_isInputBlocked) return;
 
-		_endTouchPos = touchPosition;
-
-		UpdateJumpState();
+		if(_isTouchValid)
+		{
+			_isTouchValid = false;
+			_endTouchPos = touchPosition;
+			UpdateJumpState();
+		}
 	}
 
 	void FixedUpdate()
@@ -159,12 +174,12 @@ public class Player : MonoBehaviour
 
 	private void Jump(Vector3 dir, float magnitude = 1f)
 	{
-		//transform.rotation = Quaternion.AngleAxis(_rb.velocity.x * 5f, Vector3.forward);
-
 		_rb.velocity = Vector2.zero;
 		_rb.AddForce(dir * _settings.JumpHeight * magnitude, ForceMode2D.Impulse);
 
 		VisualUtils.AddDarkHit(new Vector3(this.transform.position.x, this.transform.position.y, -1f));
+
+		GameController.Instance.StartRound();
 	}
 
 	private void Boost(Vector3 dir, float magnitude = 1f)
