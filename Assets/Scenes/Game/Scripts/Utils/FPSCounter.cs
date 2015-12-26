@@ -5,6 +5,12 @@ public class FPSCounter : MonoBehaviour
 {
 	public tk2dTextMesh FPSText;
 
+	void Start()
+	{
+		// Only show FPS in debug build
+		this.gameObject.SetActive(GameSettings.Instance.IsDebug);
+	}
+
 	void Update()
 	{
 		float fps = (int)(1.0f / Time.unscaledDeltaTime);

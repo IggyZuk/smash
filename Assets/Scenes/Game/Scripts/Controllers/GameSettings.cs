@@ -4,6 +4,8 @@ using System.Collections;
 [System.Serializable]
 public class GameSettings : MonoBehaviour
 {
+	public bool IsDebug = false;
+
 	public Prefabs Prefabs;
 	public WorldSettings WorldSettings;
 	public PlayerSettings PlayerSettings;

@@ -8,13 +8,15 @@ namespace Gacha
 	{
 		public string Name;
 		public Color Color;
+		public float Price;
 		internal Transform Transform;
 	}
 
 	public class ScrollableArea : MonoBehaviour
 	{
 		public tk2dTextMesh NameText;
-		public tk2dTextMesh NumberText;
+		public tk2dTextMesh PriceText;
+		public tk2dTextMesh CountText;
 
 		public Transform Content;
 		public BoxCollider Collider;
@@ -102,7 +104,8 @@ namespace Gacha
 
 			// Set global name text to the item text
 			NameText.text = closestItem.Name;
-			NumberText.text = string.Format("{0}/{1}", idx + 1, Items.Length);
+			PriceText.text = string.Format("${0}", closestItem.Price);
+			CountText.text = string.Format("{0}/{1}", idx + 1, Items.Length);
 
 			// Make item bigger
 			closestItem.Transform.localScale = Vector3.one * 1.1f;

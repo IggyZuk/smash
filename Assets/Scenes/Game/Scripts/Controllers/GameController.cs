@@ -4,15 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+	// UI elements 
+	// TODO: move these some place encapsulated
+	[SerializeField]
+	public tk2dUIItem _settingsButton;
+	[SerializeField]
+	public tk2dUIItem _pauseButton;
+	[SerializeField]
+	public MeshRenderer _logo;
+
 	// Events
+	// TODO: make these static and move them to appropriate classes
 	public System.Action<Vector3, float> OnPlayerBoost;
 	public System.Action<bool> OnPlayerInputBlocked;
 	public System.Action<bool> OnPlayerSetVisible;
 
+	// Public properties, many classes use these
 	public Player Player { get; private set; }
 	public CameraController Camera { get; private set; }
 
-	private GoalSystem GoalSystem;
+	private GoalSystem _goalSystem;
 
 	private bool _isPaused = false;
 
@@ -27,7 +38,15 @@ public class GameController : MonoBehaviour
 		Player = FindObjectOfType<Player>();
 		Camera = FindObjectOfType<CameraController>();
 
-		GoalSystem = this.gameObject.GetComponent<GoalSystem>();
+		_goalSystem = this.gameObject.GetComponent<GoalSystem>();
+
+		// Pressing settings button will take us to gacha scene
+		_settingsButton.OnClick += () => { UnityEngine.SceneManagement.SceneManager.LoadScene("Gacha"); };
+
+		// Pressing pause button will obviously pause the game
+		_pauseButton.OnClick += () => { TogglePause(); };
+
+		OnPlayerBoost += (Vector3 v, float f) => { _logo.enabled = false; };
 	}
 
 	void Update()
@@ -47,10 +66,13 @@ public class GameController : MonoBehaviour
 
 	void OnGUI()
 	{
-		if(GUI.Button(new Rect(Screen.width - 160, 10, 150, 50), "Restart"))
+		if(GameSettings.Instance.IsDebug)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			Time.timeScale = 1f;
+			if(GUI.Button(new Rect(10, 10, 150, 50), "Restart"))
+			{
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+				Time.timeScale = 1f;
+			}
 		}
 	}
 
