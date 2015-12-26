@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 84377626}
   - 114: {fileID: 84377627}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tween
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - 114: {fileID: 167196840}
   - 65: {fileID: 167196842}
   - 114: {fileID: 167196841}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Settings-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - 33: {fileID: 192178974}
   - 23: {fileID: 192178973}
   - 114: {fileID: 192178972}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - 33: {fileID: 401587147}
   - 23: {fileID: 401587146}
   - 114: {fileID: 401587145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   - 33: {fileID: 614044860}
   - 114: {fileID: 614044859}
   - 114: {fileID: 614044858}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Goal-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   - 114: {fileID: 709294006}
   - 114: {fileID: 709294005}
   - 114: {fileID: 709294004}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - 114: {fileID: 750161167}
   - 65: {fileID: 750161169}
   - 114: {fileID: 750161168}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pause-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,6 +1253,22 @@ Prefab:
       propertyPath: InitialModule.startColor.maxColor.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 113234, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 143782, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 155004, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199008, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 323f56f9fe4705f43b17b626c8189490, type: 2}
   m_IsPrefabParent: 0
@@ -1397,7 +1413,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1149371825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1908,7 +1924,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1707833709}
   - 114: {fileID: 1707833710}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tween
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2155,7 +2171,7 @@ GameObject:
   - 33: {fileID: 1840318679}
   - 114: {fileID: 1840318678}
   - 114: {fileID: 1840318681}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2279,7 +2295,7 @@ GameObject:
   - 33: {fileID: 1899797853}
   - 23: {fileID: 1899797852}
   - 114: {fileID: 1899797851}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2469,7 +2485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 2024444199}
   FollowSpeed: 8
-  Offset: -2
+  Offset: -1.75
   Status: {fileID: 2034951377}
 --- !u!4 &1967639885
 Transform:
@@ -2478,7 +2494,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1967639883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1721873002}
@@ -2579,7 +2595,7 @@ GameObject:
   - 33: {fileID: 2111721996}
   - 23: {fileID: 2111721995}
   - 114: {fileID: 2111721994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
