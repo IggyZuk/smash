@@ -992,6 +992,18 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11492140, guid: 89d1aa3a48d0f3f428d354b41f2794f6, type: 2}
+      propertyPath: _color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492140, guid: 89d1aa3a48d0f3f428d354b41f2794f6, type: 2}
+      propertyPath: _color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492140, guid: 89d1aa3a48d0f3f428d354b41f2794f6, type: 2}
+      propertyPath: _color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89d1aa3a48d0f3f428d354b41f2794f6, type: 2}
   m_IsPrefabParent: 0
@@ -1754,13 +1766,13 @@ MonoBehaviour:
     Color: {r: 1, g: 1, b: 1, a: 1}
     Price: 2.99
   - Name: LUIGI
-    Color: {r: 0, g: 1, b: 0.8758622, a: 1}
+    Color: {r: 0, g: 1, b: 0, a: 1}
     Price: 1.99
   - Name: DONKEY KONG
-    Color: {r: 1, g: 0.5586206, b: 0, a: 1}
+    Color: {r: 0, g: 1, b: 1, a: 1}
     Price: 0.99
   - Name: IGGY
-    Color: {r: 0, g: 0, b: 0, a: 1}
+    Color: {r: 1, g: 0, b: 0, a: 1}
     Price: 5.99
   - Name: GONZO
     Color: {r: 0, g: 0, b: 0, a: 1}

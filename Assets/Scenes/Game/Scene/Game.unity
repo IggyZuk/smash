@@ -355,7 +355,7 @@ GameObject:
   - 23: {fileID: 192178973}
   - 114: {fileID: 192178972}
   m_Layer: 0
-  m_Name: Logo
+  m_Name: Main-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,14 +402,14 @@ MonoBehaviour:
   data:
     version: 1
     font: {fileID: 11400000, guid: e7a6b09a73c6b2b4f8060096ddbd3b5e, type: 2}
-    text: SMASH
+    text: main
     color: {r: 1, g: 1, b: 1, a: 1}
     color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
     textureGradient: 3
     anchor: 4
     renderLayer: 0
-    scale: {x: 20, y: 20, z: 1}
+    scale: {x: 15, y: 15, z: 1}
     kerning: 0
     maxChars: 16
     inlineStyling: 0
@@ -689,7 +689,7 @@ GameObject:
   - 114: {fileID: 614044859}
   - 114: {fileID: 614044858}
   m_Layer: 0
-  m_Name: GoalText
+  m_Name: Goal-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settingsButton: {fileID: 167196840}
   _pauseButton: {fileID: 750161167}
-  _logo: {fileID: 192178973}
+  _mainText: {fileID: 192178972}
 --- !u!114 &826424281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c06e10d6d897f458585d64b48124e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebug: 1
+  IsDebug: 0
   Prefabs:
     Player: {fileID: 118958, guid: 503b7cf6814a6df4682648aef367a7c4, type: 2}
     Enemy: {fileID: 161734, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
@@ -1468,6 +1468,7 @@ MonoBehaviour:
   PlayerSettings:
     JumpHeight: 5
     SkinIdx: 2
+    HACK_colorTint: {r: 1, g: 1, b: 1, a: 1}
   EnemySettings:
     Health: 2
   DamageSettings:
@@ -1636,7 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 84c5de5da52dfea4686a1dea429b2ae0, type: 3}
   PixelColor: {r: 1, g: 1, b: 1, a: 1}
-  PixelSize: 16
+  PixelSize: 3
 --- !u!81 &1187429199
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2155,7 +2156,7 @@ GameObject:
   - 114: {fileID: 1840318678}
   - 114: {fileID: 1840318681}
   m_Layer: 0
-  m_Name: ScoreText
+  m_Name: Score-Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

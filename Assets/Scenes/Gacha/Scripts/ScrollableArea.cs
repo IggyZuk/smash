@@ -107,6 +107,9 @@ namespace Gacha
 			PriceText.text = string.Format("${0}", closestItem.Price);
 			CountText.text = string.Format("{0}/{1}", idx + 1, Items.Length);
 
+			// HACK: save color tint of the chosen skin into the game settings
+			GameSettings.Instance.PlayerSettings.HACK_colorTint = closestItem.Color;
+
 			// Make item bigger
 			closestItem.Transform.localScale = Vector3.one * 1.1f;
 			closestItem.Transform.GetComponent<tk2dSprite>().color = closestItem.Color * Color.white;

@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
 
 		// FiFind the current player skin prefix for the sprites
 		_playerSkinPrefix = string.Format("Player0{0}", _settings.SkinIdx);
+		_sprite.color = GameSettings.Instance.PlayerSettings.HACK_colorTint;
 	}
 
 	void OnDestroy()
@@ -129,7 +130,6 @@ public class Player : MonoBehaviour
 			_startDivePos = _rb.position;
 			Jump(direction);
 
-			//_sprite.color = Color.red;
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Dive, 0.5f, 1f);
 		}
 		else if(_jumpState == JumpState.Floating)
@@ -137,7 +137,6 @@ public class Player : MonoBehaviour
 			_jumpState = JumpState.FirstJump;
 			Jump(direction);
 
-			//_sprite.color = new Color(0.25f, 0.75f, 0.25f);
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1f);
 		}
 		else if(_jumpState == JumpState.FirstJump)
@@ -145,7 +144,6 @@ public class Player : MonoBehaviour
 			_jumpState = JumpState.SecondJump;
 			Jump(direction);
 
-			//_sprite.color = Color.green;
 			GameController.Instance.PlaySound(GameSettings.Instance.AudioSettings.Swipe, 1f, 1.25f);
 		}
 	}
@@ -155,7 +153,6 @@ public class Player : MonoBehaviour
 		if(collision.gameObject.tag == "Ground")
 		{
 			_jumpState = JumpState.Floating;
-			_sprite.color = Color.white;
 			_sprite.SetSprite(string.Format("{0}_Static", _playerSkinPrefix));
 		}
 	}
@@ -178,7 +175,6 @@ public class Player : MonoBehaviour
 
 		// Reset the state; allow the player to jump again
 		_jumpState = JumpState.Floating;
-		_sprite.color = Color.white;
 	}
 
 	public Vector2 GetVelocity()

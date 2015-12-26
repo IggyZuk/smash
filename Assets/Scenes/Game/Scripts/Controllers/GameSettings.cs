@@ -17,12 +17,18 @@ public class GameSettings : MonoBehaviour
 
 	void Awake()
 	{
+		if(Instance != null)
+		{
+			GameObject.Destroy(this.gameObject);
+			return;
+		}
+
 		Debug.Assert(Instance == null, "Singleton can only have one instance!");
 		Instance = this;
 
 		Screen.SetResolution(480, 800, false, 60);
 
-		//Object.DontDestroyOnLoad(gameObject);
+		Object.DontDestroyOnLoad(gameObject);
 	}
 }
 
@@ -55,6 +61,7 @@ public class PlayerSettings
 {
 	public float JumpHeight = 5f;
 	public int SkinIdx = 1;
+	public Color HACK_colorTint = Color.white;
 }
 
 [System.Serializable]

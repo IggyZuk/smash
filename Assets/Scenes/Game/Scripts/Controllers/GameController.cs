@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 	[SerializeField]
 	public tk2dUIItem _pauseButton;
 	[SerializeField]
-	public MeshRenderer _logo;
+	public tk2dTextMesh _mainText;
 
 	// Events
 	// TODO: make these static and move them to appropriate classes
@@ -22,10 +22,10 @@ public class GameController : MonoBehaviour
 	// Public properties, many classes use these
 	public Player Player { get; private set; }
 	public CameraController Camera { get; private set; }
+	public bool IsPaused { get; private set; }
 
 	private GoalSystem _goalSystem;
 
-	private bool _isPaused = false;
 
 	public static GameController Instance { get; private set; }
 
@@ -46,7 +46,8 @@ public class GameController : MonoBehaviour
 		// Pressing pause button will obviously pause the game
 		_pauseButton.OnClick += () => { TogglePause(); };
 
-		OnPlayerBoost += (Vector3 v, float f) => { _logo.enabled = false; };
+		// Let's disable the main text
+		_mainText.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -100,8 +101,18 @@ public class GameController : MonoBehaviour
 
 	public void TogglePause()
 	{
-		_isPaused = !_isPaused;
-		if(_isPaused) Time.timeScale = 0f;
-		else Time.timeScale = 1f;
+		IsPaused = !IsPaused;
+
+		_mainText.gameObject.SetActive(IsPaused);
+
+		if(IsPaused)
+		{
+			Time.timeScale = 0f;
+			_mainText.text = "paused";
+		}
+		else
+		{
+			Time.timeScale = 1f;
+		}
 	}
 }

@@ -7,8 +7,10 @@ public class InputController : MonoBehaviour
 	public static System.Action<Vector2> OnTouchMoved;
 	public static System.Action<Vector2> OnTouchEnded;
 
-	void Update()
+	void LateUpdate()
 	{
+		// Block input if the game is paused
+		if(GameController.Instance.IsPaused) return;
 
 #if UNITY_EDITOR || UNITY_STANDALONE
 		if(Input.GetMouseButtonDown(0))
