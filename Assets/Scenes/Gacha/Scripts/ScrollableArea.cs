@@ -24,6 +24,7 @@ namespace Gacha
 		public float ItemWidth;
 		public Item[] Items;
 
+		private Item _lastItem = null;
 		private bool _isDragging = false;
 		private float _startPosX = 0f;
 		private float _contentLastPosX = 0f;
@@ -45,6 +46,8 @@ namespace Gacha
 				go.transform.SetParent(Content);
 				Items[i].Transform = go.transform;
 			}
+
+			_lastItem = Items[0];
 		}
 
 		void OnDestroy()
@@ -101,6 +104,13 @@ namespace Gacha
 			idx = Mathf.Clamp(idx, 0, Items.Length - 1);
 
 			Item closestItem = Items[idx];
+
+			// If this is a newly selected item, let's play a sound
+			if(closestItem != _lastItem)
+			{
+				GetComponent<AudioSource>().Play();
+			}
+			_lastItem = closestItem;
 
 			// Set global name text to the item text
 			NameText.text = closestItem.Name;
