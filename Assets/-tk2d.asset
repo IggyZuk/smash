@@ -739,6 +739,7 @@ MonoBehaviour:
     - GroundBush
     - Cloud
     - Player02_Dead
+    - cloud_gray
     spriteTextureGUIDs:
     - e1767671402cfac4a890297bab93e7f7
     - fe6f85919321dae4daf02dcf6b775bc7
@@ -775,6 +776,7 @@ MonoBehaviour:
     - 4427d90b523e5794cbe98d6c8f80bed2
     - 67fb3e2b8c9f99147b7387127607e8c8
     - ad8719067b034f9458574315cce4595b
+    - db0b7ba05efe877449355635a839a7ac
     spriteTextureTimeStamps:
     - 1451165894.09916
     - 1451165894.10167
@@ -811,6 +813,7 @@ MonoBehaviour:
     - 1451165894.10449
     - 1451165894.08915
     - 1451420567.63345
+    - 1451424319.46072
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
