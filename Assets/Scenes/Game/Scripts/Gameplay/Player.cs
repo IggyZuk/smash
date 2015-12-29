@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 	private PlayerSettings _settings;
 
 	private bool _isInputBlocked = false;
-	private bool _isGameOver = false;
+	private bool _isDead = false;
 
 	private string _playerSkinPrefix;
 
@@ -94,20 +94,30 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if(_rb.velocity.y > 8f) _sprite.SetSprite(string.Format("{0}_Jump", _playerSkinPrefix));
+		if(_isDead) _sprite.SetSprite(string.Format("{0}_Dead", _playerSkinPrefix));
+		else if(_rb.velocity.y > 8f) _sprite.SetSprite(string.Format("{0}_Jump", _playerSkinPrefix));
 		else if(_rb.velocity.y > 0f) _sprite.SetSprite(string.Format("{0}_InAir", _playerSkinPrefix));
 		else if(_jumpState == JumpState.Attack) _sprite.SetSprite(string.Format("{0}_Dive", _playerSkinPrefix));
 
 		// Turn side to side
 		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 1f;
 
+		// If the player reaches the bottom edge of the screen it's game over
 		if(Camera.main.WorldToViewportPoint(this.transform.position).y < 0 - 0.1f)
 		{
-			if(_isGameOver == false)
+			if(_isDead == false)
 			{
 				StartCoroutine(Lose_Coroutine(3.266f));
-				_isGameOver = true;
+				_isDead = true;
 				_isInputBlocked = true;
+
+				// Disable the collider and make gravity stronger
+				GetComponent<CircleCollider2D>().enabled = false;
+				_rb.gravityScale = 2.5f;
+
+				// Visuals - Add blood FX and give the player one last jump to show the dead sprite
+				VisualUtils.AddExplosion(new Vector3(_rb.position.x, Camera.main.ViewportToWorldPoint(Vector3.zero).y + 1f, -1f));
+				Jump(Vector3.up, 1.5f);
 			}
 		}
 
