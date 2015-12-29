@@ -31,8 +31,6 @@ public class Enemy : MonoBehaviour
 		_speed = Random.value * 5f;
 
 		_rb.velocity = new Vector2(_speed, 0f);
-
-		Debug.Log(_rb.velocity);
 	}
 
 	void FixedUpdate()
