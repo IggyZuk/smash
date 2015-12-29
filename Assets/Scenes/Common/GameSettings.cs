@@ -40,6 +40,7 @@ public class Prefabs
 	public GameObject Enemy;
 	public GameObject Barrel;
 	public GameObject Bone;
+	public GameObject Coin;
 	[Header("FX")]
 	public GameObject Explosion;
 	public GameObject FireExplosion;
@@ -95,4 +96,5 @@ public class AudioSettings
 	public AudioClip Dive;
 	public AudioClip ScorePoint;
 	public AudioClip Lose;
+	public AudioClip Coin;
 }

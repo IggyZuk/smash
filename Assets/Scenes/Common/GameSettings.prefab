@@ -45,10 +45,12 @@ MonoBehaviour:
     Enemy: {fileID: 161734, guid: 63431814234aa7b4ea626a09603bcede, type: 2}
     Barrel: {fileID: 143304, guid: 0210f24d250b56645be548626b7472d0, type: 2}
     Bone: {fileID: 178944, guid: 45dcc0ea38a6f924c93b0435f3161d47, type: 2}
+    Coin: {fileID: 101958, guid: a596c6fc7cdba874ea7d2fdde33b32b3, type: 2}
     Explosion: {fileID: 100004, guid: c4389d895c4fd3245892eeb63971576f, type: 2}
     FireExplosion: {fileID: 198660, guid: de1ae3a765b12034fa96c50b9fa3bb44, type: 2}
     Hit: {fileID: 100006, guid: 2ec82f8f857f7b3439995cb06ef0f18a, type: 2}
     DarkHit: {fileID: 172670, guid: ede1a83208eeb9143b47769fdef5bc93, type: 2}
+    Blood: {fileID: 199928, guid: 663fc844f10c5da459f8fefd94365698, type: 2}
   WorldSettings:
     EdgeMargin: 0.04
     EdgeVelocityFriction: 0.75
@@ -72,6 +74,7 @@ MonoBehaviour:
     Dive: {fileID: 8300000, guid: 8fc66f9a789050f418b0fb42aca34b8d, type: 3}
     ScorePoint: {fileID: 8300000, guid: 18b99bccce668914d990d7a0bc2117d8, type: 3}
     Lose: {fileID: 8300000, guid: 11642fb9b7d931949991791857b3b095, type: 3}
+    Coin: {fileID: 8300000, guid: 43ae05c69c92fc742afcb7be7f85b7b4, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -73,6 +73,9 @@ public class GoalSystem : MonoBehaviour
 
 				Instantiate(entity, entityPosition, Quaternion.identity);
 
+				// Add a random coin just above the new entity
+				if(Random.value < 0.25) Instantiate(GameSettings.Instance.Prefabs.Coin, entityPosition + Vector2.up * 2.5f, Quaternion.identity);
+
 				_deltaPosition -= ADD_ENTITY_DISTANCE;
 			}
 
