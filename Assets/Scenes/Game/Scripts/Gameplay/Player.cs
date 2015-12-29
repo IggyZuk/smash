@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
 	{
 		// Find direction of the swipe so we can decide if we're in attack mode
 		Vector2 direction = _endTouchPos - _startTouchPos;
-		if(direction.magnitude > 25f) direction.Normalize();
+		if(direction.magnitude > 1f) direction.Normalize();
 		else direction = Vector2.up;
 
 		// Check & update jumping state
