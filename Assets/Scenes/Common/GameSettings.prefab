@@ -50,20 +50,19 @@ MonoBehaviour:
     FireExplosion: {fileID: 198660, guid: de1ae3a765b12034fa96c50b9fa3bb44, type: 2}
     Hit: {fileID: 100006, guid: 2ec82f8f857f7b3439995cb06ef0f18a, type: 2}
     DarkHit: {fileID: 172670, guid: ede1a83208eeb9143b47769fdef5bc93, type: 2}
-    Blood: {fileID: 199928, guid: 663fc844f10c5da459f8fefd94365698, type: 2}
   WorldSettings:
     EdgeMargin: 0.04
     EdgeVelocityFriction: 0.75
     SlowMotion: 0.3
     SlowMotionWait: 1
   PlayerSettings:
-    JumpHeight: 5
+    JumpHeight: 7
     SkinIdx: 2
     HACK_colorTint: {r: 1, g: 1, b: 1, a: 1}
   EnemySettings:
     Health: 2
   DamageSettings:
-    Boost: 8
+    Boost: 8.5
   AudioSettings:
     Collect: {fileID: 8300000, guid: eb6d36ff5c59e5d4c8e1f1d5e9de2aa6, type: 3}
     Death: {fileID: 8300000, guid: b9c811018f909dd418c8d238029cc763, type: 3}

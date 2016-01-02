@@ -12,7 +12,7 @@ public class GoalSystem : MonoBehaviour
 
 	private float _maxHeight = 0f;
 	private float _deltaPosition = 10.0f;
-	private const float ADD_ENTITY_DISTANCE = 14.5f;
+	private const float ADD_ENTITY_DISTANCE = 17.5f;
 
 	private int _count = 0;
 	private float _nextHeight = Mathf.NegativeInfinity;
@@ -116,7 +116,7 @@ public class GoalSystem : MonoBehaviour
 		_line.SetPosition(1, new Vector3(WorldUtils.GetRightEdge(), _nextHeight, 0));
 	}
 
-	IEnumerator SlowMotion_Coroutine(float time)
+	private IEnumerator SlowMotion_Coroutine(float time)
 	{
 		//AndroidNotificationManager.instance.ScheduleLocalNotification("New Highscore", "Holy smokes, you're doing awesome!", 1);
 

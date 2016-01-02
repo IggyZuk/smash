@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 		else if(_jumpState == JumpState.Attack) _sprite.SetSprite(string.Format("{0}_Dive", _playerSkinPrefix));
 
 		// Turn side to side
-		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 1f;
+		_sprite.scale = (Vector3.right * Mathf.Sign(_rb.velocity.x) + Vector3.up) * 1.25f;
 
 		// If the player reaches the bottom edge of the screen it's game over
 		if(Camera.main.WorldToViewportPoint(this.transform.position).y < 0 - 0.1f)
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
 
 				// Visuals - Add blood FX and give the player one last jump to show the dead sprite
 				VisualUtils.AddExplosion(new Vector3(_rb.position.x, Camera.main.ViewportToWorldPoint(Vector3.zero).y + 1f, -1f));
-				Jump(Vector3.up, 1.5f);
+				Jump(Vector3.up);
 			}
 		}
 
